@@ -23,61 +23,48 @@
             <div class="container">
                 <div class="contact-wrap">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-12">
+                        <div style="text-align:center" class="col-lg-12 col-md-12 col-12">
                         	<div class="contact-title">
-                        		<h5>Contact Informations</h5>
+                        		<h5 style="margin: 0 0 0 50px">Contact Informations</h5>
                         	</div>
                             <ul class="contact-area lab-ul">
                                 <li class="contact-item">
                                     <div class="contact-icon">
-                                        <img src="assets/images/contact/icon/01.png" alt="contact">
+                                        <img src="~/assets/images/contact/icon/01.png" alt="contact">
                                     </div>
                                     <div class="content">
                                         <h6>Our Location</h6>
-                                        <p>218 Sahera Tropical Center Room#7 <br> New Elephant Road 1205</p>
+                                        <p>@Model[0].Diachi</p>
                                     </div>
                                 </li>
                                 <li class="contact-item">
                                     <div class="contact-icon">
-                                        <img src="assets/images/contact/icon/02.png" alt="contact">
+                                        <img src="~/assets/images/contact/icon/02.png" alt="contact">
                                     </div>
                                     <div class="content">
                                         <h6>Phone Number</h6>
-                                        <p>01923-970212, 01776-502993 <br> +2154897369</p>
+                                        <p>@Model[0].Sdt</p>
                                     </div>
                                 </li>
                                 <li class="contact-item">
                                     <div class="contact-icon">
-                                        <img src="assets/images/contact/icon/03.png" alt="contact">
+                                        <img src="~/assets/images/contact/icon/03.png" alt="contact">
                                     </div>
                                     <div class="content">
                                         <h6>Email Address</h6>
-                                        <p>suport@admincovid.com</p>
+                                        <p>@Model[0].Email</p>
                                     </div>
                                 </li>
                                 <li class="contact-item">
                                     <div class="contact-icon">
-                                        <img src="assets/images/contact/icon/04.png" alt="contact">
+                                        <img src="~/assets/images/contact/icon/04.png" alt="contact">
                                     </div>
                                     <div class="content">
                                         <h6>Website Address:</h6>
-                                        <p>http://admincovid.com</p>
+                                        <p><i class="icofont-facebook"></i></p>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="col-lg-8 col-md-6 col-xs-12">
-                        	<div class="contact-title">
-                        		<h5>Send us a Massage</h5>
-                        	</div>
-                            <form class="contact-form" action="contact.php" method="POST">
-                                <input type="text" name="name" placeholder="Your Name" class="contact-input">
-                                <input type="email" name="email" placeholder="Your Email" class="contact-input">
-                                <input type="text" name="text" placeholder="Your Address" class="contact-input">
-                                <input type="text" name="text" placeholder="Your Company" class="contact-input">
-                                <textarea rows="5" class="contact-input" placeholder="Your Messages"></textarea>
-                                <input type="submit" name="submit" value="Send Message" class="lab-btn">
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -88,7 +75,8 @@
         <!-- G-Map Section Start Here -->
         <div class="gmaps-section">
             <div class="map-area">
-				<iframe class="maps" src="https://coronavirus.app/map?embed=true" allow="accelerometer;" allowfullscreen style="border:0"></iframe>
+				@*<iframe class="maps" src="https://coronavirus.app/map?embed=true" allow="accelerometer;" allowfullscreen style="border:0"></iframe>*@
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1066.7903574426502!2d106.83220608018195!3d10.837439069446777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317521ba9415b293%3A0xb6d3b7f0c8d2a78c!2sVinhome%20Grand%20Park%20Homestay%20House%20(Phong%20Nh%C3%A3)!5e0!3m2!1svi!2s!4v1655234249437!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <!-- G-Map Section Ending Here -->
