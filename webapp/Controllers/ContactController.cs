@@ -17,7 +17,6 @@ namespace WepApp.Controllers
         }
         public IActionResult Feedback()
         {
-            //var lienhe = _context.Lienhes.ToList();
             return View();
         }
         [HttpPost]
