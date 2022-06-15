@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewData["Title"] = "Pagecarts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Product Page Cart</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Home</a></li>
+                <li>Cart Page</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+<!-- Shop Cart Page Section start here -->
+<div class="shop-cart padding-tb">
+    <div class="container">
+        <div class="section-wrapper">
+            <div class="cart-top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="cat-product">Sản phẩm</th>
+                            <th class="cat-price">Giá bán</th>
+                            <th class="cat-quantity">Số lượng</th>
+                            <th class="cat-toprice">Tổng cộng</th>
+                            <th class="cat-edit">Chỉnh sửa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="product-item cat-product">
+                                <div class="p-thumb">
+                                    <a href="#"><img src="~/assets/images/shop/01.jpg" alt="product"></a>
+                                </div>
+                                <div class="p-content">
+                                    <a href="#">Product Text Here</a>
+                                </div>
+                            </td>
+                            <td class="cat-price">$250</td>
+                            <td class="cat-quantity">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="3">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </td>
+                            <td class="cat-toprice">$750</td>
+                            <td class="cat-edit">
+                                <a href="#"><img src="~/assets/images/shop/del.png" alt="product"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-item cat-product">
+                                <div class="p-thumb">
+                                    <a href="#"><img src="~/assets/images/shop/02.jpg" alt="product"></a>
+                                </div>
+                                <div class="p-content">
+                                    <a href="#">Product Text Here</a>
+                                </div>
+                            </td>
+                            <td class="cat-price">$250</td>
+                            <td class="cat-quantity">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </td>
+                            <td class="cat-toprice">$500</td>
+                            <td class="cat-edit">
+                                <a href="#"><img src="~/assets/images/shop/del.png" alt="product"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-item cat-product">
+                                <div class="p-thumb">
+                                    <a href="#"><img src="~/assets/images/shop/03.jpg" alt="product"></a>
+                                </div>
+                                <div class="p-content">
+                                    <a href="#">Product Text Here</a>
+                                </div>
+                            </td>
+                            <td class="cat-price">$50</td>
+                            <td class="cat-quantity">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </td>
+                            <td class="cat-toprice">$100</td>
+                            <td class="cat-edit">
+                                <a href="#"><img src="~/assets/images/shop/del.png" alt="product"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-item cat-product">
+                                <div class="p-thumb">
+                                    <a href="#"><img src="~/assets/images/shop/04.jpg" alt="product"></a>
+                                </div>
+                                <div class="p-content">
+                                    <a href="#">Product Text Here</a>
+                                </div>
+                            </td>
+                            <td class="cat-price">$100</td>
+                            <td class="cat-quantity">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </td>
+                            <td class="cat-toprice">$200</td>
+                            <td class="cat-edit">
+                                <a href="#"><img src="~/assets/images/shop/del.png" alt="product"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-item cat-product">
+                                <div class="p-thumb">
+                                    <a href="#"><img src="~/assets/images/shop/05.jpg" alt="product"></a>
+                                </div>
+                                <div class="p-content">
+                                    <a href="#">Product Text Here</a>
+                                </div>
+                            </td>
+                            <td class="cat-price">$200</td>
+                            <td class="cat-quantity">
+                                <div class="cart-plus-minus">
+                                    <div class="dec qtybutton">-</div>
+                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                    <div class="inc qtybutton">+</div>
+                                </div>
+                            </td>
+                            <td class="cat-toprice">$400</td>
+                            <td class="cat-edit">
+                                <a href="#"><img src="~/assets/images/shop/del.png" alt="product"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="cart-bottom">
+                <div class="cart-checkout-box">
+                    @*<form class="coupon" action="/">
+                        <input type="text" name="coupon" placeholder="Coupon Code..." class="cart-page-input-text">
+                        <input type="submit" value="Apply Coupon">
+                    </form>*@
+                    <form class="cart-checkout" action="/">
+                        <input type="submit" value="Cập nhật giỏ hàng">
+                        <input type="submit" value="Tiến hành thanh toán">
+                    </form>
+                </div>
+                <div class="shiping-box">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="calculate-shiping">
+                                <h3>Tính toán vận chuyển</h3>
+                                <div class="outline-select">
+                                    <select>
+                                        <option value="volvo">United Kingdom (UK)</option>
+                                        <option value="saab">Bangladesh</option>
+                                        <option value="saab">Pakisthan</option>
+                                        <option value="saab">India</option>
+                                        <option value="saab">Nepal</option>
+                                    </select>
+                                    <span class="select-icon"><i class="icofont-rounded-down"></i></span>
+                                </div>
+                                <div class="outline-select shipping-select">
+                                    <select>
+                                        <option value="volvo">State/Country</option>
+                                        <option value="saab">Dhaka</option>
+                                        <option value="saab">Benkok</option>
+                                        <option value="saab">Kolkata</option>
+                                        <option value="saab">Kapasia</option>
+                                    </select>
+                                    <span class="select-icon"><i class="icofont-rounded-down"></i></span>
+                                </div>
+                                <input type="text" name="coupon" placeholder="Postcode/ZIP" class="cart-page-input-text" />
+                                <button type="submit">Update Total</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="cart-overview">
+                                <h3>Tổng giỏ hàng</h3>
+                                <ul class="codex">
+                                    <li>
+                                        <span class="pull-left">Tổng phụ giỏ hàng</span>
+                                        <p class="pull-right">$ 0.00</p>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Vận chuyển và xử lý</span>
+                                        <p class="pull-right">Free Shipping</p>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Tổng đơn hàng đặt</span>
+                                        <p class="pull-right">$ 2940.00</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Cart Page Section ending here -->

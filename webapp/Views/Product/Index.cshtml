@@ -1,0 +1,276 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Products Page</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Home</a></li>
+                <li>Shop Page</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+<!-- Shop Page Section start here -->
+<section class="shop-page padding-tb">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-12 sticky-widget">
+                <div class="shop-title d-flex flex-wrap justify-content-between">
+                    <p>Kết quả tìm kiếm:@ViewBag.Count</p>
+                    <div class="product-view-mode">
+                        <a class="active" data-target="grid"><i class="icofont-ghost"></i></a>
+                        <a data-target="list"><i class="icofont-listine-dots"></i></a>
+                    </div>
+                </div>
+                <div class="shop-product-wrap grid row justify-content-center">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="product-item">
+                                <div class="product-thumb">
+                                    <div class="pro-thumb">
+                                        <img src="~/@item.Img" alt="shop">
+                                    </div>
+                                    <div class="product-action-link">
+                                        <a class="view-modal" data-target="#quick_view"><i class="icofont-eye"></i></a>
+                                        <a href="#"><i class="icofont-heart"></i></a>
+                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h5>
+                                        @Html.ActionLink((string)item.Tensp, "details", "product", new { id = item.Masp })
+                                    </h5>
+                                    <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i></p>
+                                    <h6>@item.Dongia</h6>
+                                </div>
+                            </div>
+                            <div class="product-list-item">
+                                <div class="product-thumb">
+                                    <div class="pro-thumb">
+                                        <img src="~/@item.Img" alt="shop">
+                                    </div>
+                                    <div class="product-action-link">
+                                        <a class="view-modal" data-target="#quick_view"><i class="icofont-eye"></i></a>
+                                        <a href="#"><i class="icofont-heart"></i></a>
+                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <h5>@Html.ActionLink((string)item.Tensp, "details", "product", new { id = item.Masp })  </h5>
+                                    <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i></p>
+                                    <h6>
+                                        @item.Dongia
+                                    </h6>
+                                    <p>
+                                        @item.Thongtin
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="paginations">
+                    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                    <ul class="d-flex flex-wrap lab-ul justify-content-center">
+
+                        <li class="d-none d-sm-block">
+                            @*@Html.PagedListPager(Model, i => Url.Action("Index", "Product", new { i, search =Context.Request.Query["search"] }))*@
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-7 col-12">
+                <aside>
+                    <div class="widget widget-search">
+                        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+                        {
+                            <input type="Text" name="search" placeholder="Search...">
+                            <button type="submit" name="submit" value="search"><i class="icofont-search-2"></i></button>
+                        }
+
+
+                    </div>
+
+                    <div class="widget shop-widget">
+                        <div class="widget-header">
+                            <h5>Danh mục sản phẩm</h5>
+                        </div>
+                        <div class="widget-wrapper">
+                            <ul class="shop-menu lab-ul">
+                                @*@foreach (var item in Model)
+                                    {
+                                        <li>
+                                            <a asp-action="ListCat" asp-route-id="@item.Madm">
+
+                                            </a>
+                                        </li>
+                                    }*@
+
+                                <!--<li><a href="#">Monitoring Ranking</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>
+                                <li><a href="#">Target Strategy</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>
+                                <li><a href="#">Nap Syndication</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>
+                                <li><a href="#">SEO Support</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>
+                                <li><a href="#">Email Marketing</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>
+                                <li><a href="#">Engine Marketing</a>-->
+                                @*<ul class="shop-submenu lab-ul">
+                                        <li><a href="#">All Products</a></li>
+                                        <li><a href="#">Seo</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">Email Marketing</a></li>
+                                        <li><a href="#">Seo Support</a></li>
+                                    </ul>*@
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="widget letest-product">
+                        <div class="widget-header">
+                            <h5>Latests Products</h5>
+                        </div>
+                        <div class="widget-wrapper">
+                            <ul class="lab-ul">
+                                <li>
+                                    <div class="product-thumb">
+                                        <img src="assets/images/shop/01.jpg" alt="shop">
+                                    </div>
+                                    <div class="product-content">
+                                        <h6><a href="#">Product Title Here</a></h6>
+                                        <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i> <span>(3 review)</span></p>
+                                        <h6>₫200</h6>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="product-thumb">
+                                        <img src="assets/images/product/Que-test-nhanh-Biomerica.jpg" alt="shop">
+                                    </div>
+                                    <div class="product-content">
+                                        <h6><a href="#">Product Title Here</a></h6>
+                                        <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i> <span>(3 review)</span></p>
+                                        <h6>₫200</h6>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="product-thumb">
+                                        <img src="assets/images/shop/03.jpg" alt="shop">
+                                    </div>
+                                    <div class="product-content">
+                                        <h6><a href="#">Product Title Here</a></h6>
+                                        <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i> <span>(3 review)</span></p>
+                                        <h6>₫200</h6>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="product-thumb">
+                                        <img src="assets/images/product/kit1.png" alt="shop">
+                                    </div>
+                                    <div class="product-content">
+                                        <h6><a href="#">Product Title Here</a></h6>
+                                        <p><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i> <span>(3 review)</span></p>
+                                        <h6>₫200</h6>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div class="modal" id="quick_view">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal"><i class="icofont-close"></i></button>
+                    <div class="modal-body">
+                        <div class="product-details-inner">
+                            <div class="row align-items-center">
+                                <div class="col-lg-5 col-12">
+                                    <div class="thumb text-center">
+                                        <div class="pro-thumb">
+                                            <img src="assets/images/shop/09.jpg" alt="shop">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="product-content">
+                                        <h5><a href="#">Product Title Here</a></h5>
+                                        <p>
+                                            <i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i>
+                                        </p>
+                                        <h6>₫200</h6>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                    </div>
+                                    <div class="cart-button">
+                                        <div class="cart-plus-minus">
+                                            <div class="dec qtybutton">-</div>
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                            <div class="inc qtybutton">+</div>
+                                        </div>
+                                        <a href="#" class="lab-btn"><span>Add to Cart</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
