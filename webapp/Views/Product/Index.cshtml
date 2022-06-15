@@ -1,14 +1,13 @@
-﻿@using PagedList;
-@using PagedList.Mvc;
-
-
-
+﻿@*@model ReflectionIT.Mvc.Paging.PagingList<webapp.Models.Sanpham>*@
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+@using MvcPagedList.Core;
+@addTagHelper*, ReflectionIT.Mvc.Paging
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <section class="page-header">
     <div class="container">
         <div class="page-title">
@@ -83,14 +82,14 @@
 
                 </div>
                 <div class="paginations">
-                    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
-                    <ul class="d-flex flex-wrap lab-ul justify-content-center">
-
+                    @*trang @(Model.PageCount< Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+                    <ul style="display:flex" class="d-flex flex-wrap lab-ul justify-content-center">
+                        @for (var p = 1; p < ViewBag.PageSize; p++)
+                        {
+                            <a href="@Url.Action("Index", new { page = p })" class="btn btn-outline-danger">@p</a>
+                        }
                         <li class="d-none d-sm-block">
-                            @*@Html.PagedListPager(Model, i => Url.Action("Index", "Product", new { i, search =Context.Request.Query["search"] }))*@
-
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -98,11 +97,10 @@
             <div class="col-lg-3 col-md-7 col-12">
                 <aside>
                     <div class="widget widget-search">
-                        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
-                        {
-                            <input type="Text" name="search" placeholder="Search...">
-                            <button type="submit" name="submit" value="search"><i class="icofont-search-2"></i></button>
-                        }
+                        <form asp-action="search" class="search-wrapper">
+                            <input type="text" name="searchPhrase" placeholder="Search...">
+                            <button type="submit"><i class="icofont-search-2"></i></button>
+                        </form>
 
 
                     </div>
@@ -113,69 +111,12 @@
                         </div>
                         <div class="widget-wrapper">
                             <ul class="shop-menu lab-ul">
-                                @*@foreach (var item in Model)
-                                    {
-                                        <li>
-                                            <a asp-action="ListCat" asp-route-id="@item.Madm">
+                                @foreach (var item in ViewBag.DanhMuc)
+                                {
+                                    <li>@Html.ActionLink((string)item.Tendm, "index", "product", new { id = item.Madm })</li>
 
-                                            </a>
-                                        </li>
-                                    }*@
+                                }
 
-                                <!--<li><a href="#">Monitoring Ranking</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>
-                                <li><a href="#">Target Strategy</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>
-                                <li><a href="#">Nap Syndication</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>
-                                <li><a href="#">SEO Support</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>
-                                <li><a href="#">Email Marketing</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>
-                                <li><a href="#">Engine Marketing</a>-->
-                                @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
-                                <!--</li>-->
                             </ul>
                         </div>
                     </div>
