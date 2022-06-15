@@ -27,14 +27,6 @@
                         	<div class="contact-title">
                         		<h5>Send us a Massage</h5>
                         	</div>
-                           @* <form class="contact-form" action="contact.php" method="POST">
-                                <input type="text" name="name" placeholder="Your Name" class="contact-input">
-                                <input type="email" name="email" placeholder="Your Email" class="contact-input">
-                                <input type="text" name="text" placeholder="Your Address" class="contact-input">
-                                <input type="text" name="text" placeholder="Your Company" class="contact-input">
-                                <textarea rows="5" class="contact-input" placeholder="Your Messages"></textarea>
-                                <input type="submit" name="submit" value="Send Message" class="lab-btn">
-                            </form>*@
                             @using (Html.BeginForm("feedback", "contact", new { accept_charset = "utf-8" }, FormMethod.Post))
                             {
                                 <span>Nội Dung:</span> @Html.TextAreaFor(m => m.Noidung, new {@Style = "text-align:center"})<br/>
