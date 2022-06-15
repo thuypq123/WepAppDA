@@ -1,10 +1,12 @@
 ﻿@model webapp.Models.Sanpham
 
 @{
-    ViewData["Title"] ="Details";
+    ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=419209693446150&autoLogAppEvents=1" nonce="ZhXuGvSF"></script>
 <!-- Page Header Section Start Here -->
 <section class="page-header">
     <div class="container">
@@ -121,7 +123,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="review">
+
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+
+                @*<div class="review">
                     <ul class="review-nav lab-ul">
                         <li class="desc" data-target="description-show">Description</li>
                         <li class="rev active" data-target="review-content-show">Reviews 4</li>
@@ -270,7 +275,7 @@
                             <p>@Model.Img</p>
                             <div class="post-item">
                                 <div class="post-thumb">
-                                    <img src="~/assets/images/shop/01.jpg" alt="shop">
+                                    <img src="~/assets/images/product/khautrang1.png" alt="shop">
                                 </div>
                                 <div class="post-content">
                                     <ul class="codex">
@@ -308,7 +313,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
 
             <div class="col-lg-3 col-md-7 col-12">
@@ -325,80 +330,64 @@
                         </div>
                         <div class="widget-wrapper">
                             <ul class="shop-menu lab-ul">
-                                <li>
-                                    <a href="#">Hỗ trợ covid-19</a>
-                                    <ul class="shop-submenu lab-ul">
-                                        <li>
-                                            <a href="#">Bộ kit xét nghiệm</a>
-                                            @*<ul class="shop-submenu lab-ul">
-                                                    <li><a href="#">All Products</a></li>
-                                                    <li><a href="#">Seo</a></li>
-                                                    <li><a href="#">Marketing</a></li>
-                                                    <li><a href="#">Email Marketing</a></li>
-                                                    <li><a href="#">Seo Support</a></li>
-                                                </ul>*@
-                                        </li>
-                                        <li><a href="#">khử khuẩn</a></li>
-                                        <li><a href="#">găng tay y tế</a></li>
-                                        <li><a href="#">khẩu trang</a></li>
-                                        <li><a href="#">thuốc</a></li>
-                                        <li><a href="#">đồ bảo hộ</a></li>
+                                @foreach (var item in ViewBag.DanhMuc)
+                                {
+                                    <li>@Html.ActionLink((string)item.Tendm, "index", "product", new { id = item.Madm })</li>
 
-                                    </ul>
-                                </li>
+                                }
                                 <!--<li><a href="#">Monitoring Ranking</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>
-                                <li><a href="#">Target Strategy</a>-->
+    <li><a href="#">Target Strategy</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>
-                                <li><a href="#">Nap Syndication</a>-->
+    <li><a href="#">Nap Syndication</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>
-                                <li><a href="#">SEO Support</a>-->
+    <li><a href="#">SEO Support</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>
-                                <li><a href="#">Email Marketing</a>-->
+    <li><a href="#">Email Marketing</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>
-                                <li><a href="#">Engine Marketing</a>-->
+    <li><a href="#">Engine Marketing</a>-->
                                 @*<ul class="shop-submenu lab-ul">
-                                        <li><a href="#">All Products</a></li>
-                                        <li><a href="#">Seo</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Email Marketing</a></li>
-                                        <li><a href="#">Seo Support</a></li>
-                                    </ul>*@
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Seo</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Email Marketing</a></li>
+            <li><a href="#">Seo Support</a></li>
+        </ul>*@
                                 <!--</li>-->
                             </ul>
                         </div>
