@@ -1,9 +1,4 @@
-﻿@*@model ReflectionIT.Mvc.Paging.PagingList<webapp.Models.Sanpham>*@
-@using X.PagedList.Mvc.Core; 
-@using X.PagedList;
-@using MvcPagedList.Core;
-@addTagHelper*, ReflectionIT.Mvc.Paging
-
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -83,12 +78,17 @@
                 </div>
                 <div class="paginations">
                     <ul style="display:flex" class="d-flex flex-wrap lab-ul justify-content-center">
-                        @for (var p = 1; p < ViewBag.PageSize; p++)
+                        @for (var p = 1; p <= ViewBag.PageSize; p++)
                         {
-                            <a href="@Url.Action("Index", new { page = p })" class="btn btn-outline-danger">@p</a>
+                            if (ViewBag.page == p)
+                            {
+                                <li class="btn active"><a style="background-color:red" href="@Url.Action("index", "product", new { page = p })">@p</a></li>
+                            }
+                            else
+                            {
+                                <li class="btn"><a  href="@Url.Action("index", "product", new { page = p })">@p</a></li>
+                            }
                         }
-                        <li class="d-none d-sm-block">
-                        </li>
                     </ul>
                 </div>
             </div>

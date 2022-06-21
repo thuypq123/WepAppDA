@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PagedList;
-using ReflectionIT.Mvc.Paging;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using webapp.Models;
-using PagedList.Mvc;
 using System;
 
 namespace WepApp.Controllers
@@ -39,8 +36,10 @@ namespace WepApp.Controllers
                 sanpham = _context.Sanphams.Where(m => m.Madm == id2).ToList();
             }
             ViewBag.Count = 0;
-            var n = _context.Sanphams.ToList().Count() % 6;
-            ViewBag.PageSize = Math.Round((float)n);
+            var n = (float)(_context.Sanphams.ToList().Count() / 6+1);
+            //ViewBag.PageSize = Math.Round((float)n);
+            ViewBag.PageSize = n;
+            ViewBag.Page = page;
             ViewBag.DanhMuc = _context.Danhmucs.ToList();
             return View(sanpham);
         }

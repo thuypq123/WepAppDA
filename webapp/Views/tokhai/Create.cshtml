@@ -1,0 +1,106 @@
+﻿@model webapp.Models.Tokhai
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Khai Báo Y tế</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="container">
+    
+    <section class="contact-us padding-tb pb-0">
+            <div class="container">
+                <div class="contact-wrap">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+                        	<div class="contact-title">
+                        		<h5 style="margin: 0 0 0 50px">Contact Informations</h5>
+                        	</div>
+                            <ul class="contact-area lab-ul">
+                                <li class="contact-item">
+                                    <div class="contact-icon">
+                                        <img src="~/assets/images/contact/icon/01.png" alt="contact">
+                                    </div>
+                                    <div class="content">
+                                        <h6>Our Location</h6>
+                                        <p>@ViewBag.Diachi[0].Diachi</p>
+                                    </div>
+                                </li>
+                                <li class="contact-item">
+                                    <div class="contact-icon">
+                                        <img src="~/assets/images/contact/icon/02.png" alt="contact">
+                                    </div>
+                                    <div class="content">
+                                        <h6>Phone Number</h6>
+                                        <p>@ViewBag.Diachi[0].Sdt</p>
+                                    </div>
+                                </li>
+                                <li class="contact-item">
+                                    <div class="contact-icon">
+                                        <img src="~/assets/images/contact/icon/03.png" alt="contact">
+                                    </div>
+                                    <div class="content">
+                                        <h6>Email Address</h6>
+                                        <p>@ViewBag.Diachi[0].Email</p>
+                                    </div>
+                                </li>
+                                <li class="contact-item">
+                                    <div class="contact-icon">
+                                        <img src="~/assets/images/contact/icon/04.png" alt="contact">
+                                    </div>
+                                    <div class="content">
+                                        <h6>Website Address:</h6>
+                                        <p><i class="icofont-facebook"></i></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-lg-8 col-md-6 col-xs-12">
+                        	<div class="contact-title">
+                        		<h5>Khai báo y tế</h5>
+                        	</div>
+                            @using (Html.BeginForm("create", "tokhai", FormMethod.Post))
+                            {
+                                <input type="text" name="dinhungdau" placeholder="Nơi di chuyển..." class="contact-input col-12">
+                                <label style="margin:5px" class="form-check-label col-12">
+                                    <input type="checkbox" class="form-check-input" name="txnguoibenh">Tiếp xúc người bệnh?
+                                </label><br/>
+                                <label style="margin:5px" class="form-check-label col-12">
+                                    <input type="checkbox" class="form-check-input" name="txnuocbenh">Từng đến nước có dịch?
+                                </label><br/>
+                                <label style="margin:5px" class="form-check-label col-12">
+                                    <input type="checkbox" class="form-check-input" name="nguoicobieuhien">Bản thân có biểu hiện bệnh không?
+                                </label><br/>
+                                <textarea rows="5" class="contact-input" placeholder="Triệu chứng..."></textarea>
+                                <input type="submit" name="submit" value="Gửi khai báo" class="lab-btn">
+                                                            
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section Ending Here -->
+
+        <!-- G-Map Section Start Here -->
+        <div class="gmaps-section">
+            <div class="map-area">
+				<iframe class="maps" src="https://coronavirus.app/map?embed=true" allow="accelerometer;" allowfullscreen style="border:0"></iframe>
+            </div>
+        </div>
+        <!-- G-Map Section Ending Here -->
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
