@@ -21,14 +21,6 @@ namespace WepApp.Controllers
         {
             _context = new covid19Context();
         }
-        //public IActionResult Index(string search, int? page)
-        //{
-        //    var pageNumber = page ?? 1;
-        //    ViewBag.Count = _context.Sanphams.Where(s => s.Tensp.Contains(search)).Count();
-        //    ViewBag.Sanphams = _context.Sanphams.ToList().ToPagedList(pageNumber, 1);
-        //    return View(_context.Sanphams.Where(x => x.Tensp.Contains(search) || search == null).ToList());
-
-        //}
 
         public async Task<IActionResult> Index(int id,int page=1)
         {
