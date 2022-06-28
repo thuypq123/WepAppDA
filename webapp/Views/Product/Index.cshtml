@@ -76,14 +76,18 @@
 
                 </div>
                 <div class="paginations">
-                    @*trang @(Model.PageCount< Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
                     <ul style="display:flex" class="d-flex flex-wrap lab-ul justify-content-center">
-                        @for (var p = 1; p < ViewBag.PageSize; p++)
+                        @for (var p = 1; p <= ViewBag.PageSize; p++)
                         {
-                            <a href="@Url.Action("Index", new { page = p })" class="btn btn-outline-danger">@p</a>
+                            if (ViewBag.page == p)
+                            {
+                                <li class="btn active"><a style="background-color:red" href="@Url.Action("index", "product", new { page = p })">@p</a></li>
+                            }
+                            else
+                            {
+                                <li class="btn"><a  href="@Url.Action("index", "product", new { page = p })">@p</a></li>
+                            }
                         }
-                        <li class="d-none d-sm-block">
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -95,10 +99,7 @@
                             <input type="text" name="searchPhrase" placeholder="Search...">
                             <button type="submit"><i class="icofont-search-2"></i></button>
                         </form>
-
-
                     </div>
-
                     <div class="widget shop-widget">
                         <div class="widget-header">
                             <h5>Danh mục sản phẩm</h5>
@@ -208,4 +209,3 @@
         </div>
     </div>
 </section>
-
