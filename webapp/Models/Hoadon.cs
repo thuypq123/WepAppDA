@@ -19,8 +19,12 @@ namespace webapp.Models
         public string Nguoinhan { get; set; }
         public string Diachinhan { get; set; }
         public string Sdtnhan { get; set; }
+        public bool? Tinhtranggiaohang { get; set; }
+        public bool? Tinhtrangthanhtoan { get; set; }
 
         public virtual Khachhang MakhNavigation { get; set; }
         public virtual ICollection<CtHoadon> CtHoadons { get; set; }
+
+        public List<Khachhang> kh = new List<Khachhang>();
     }
 }

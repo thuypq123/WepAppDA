@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Page Header Section Start Here -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Our Recent News</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Home</a></li>
+                <li>Blog</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+<!-- Blog Section Start Here -->
+<section class="blog-section padding-tb">
+    <div class="container">
+        <div class="section-wrapper">
+            <div class="row justify-content-center">
+                @foreach (var item in Model)
+                {
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="post-item">
+                        <div class="post-item-inner">
+                            <div class="post-thumb">
+                                <a href="#"><img src="@item.Anh" alt="lab-blog"></a>
+                            </div>
+                            <div class="post-content">
+                                <h5><a href="#">@item.Tieude</a></h5>
+                                <div class="author-date">
+                                    <a href="#" class="date"><i class="icofont-calendar"></i>@item.Ngaydang</a>
+                                    <a href="#" class="admin"><i class="icofont-ui-user"></i>@item.Tk </a>
+                                </div>
+                                <p>@item.Noidung</p>
+                                <div class="post-footer">
+                                    <a href="#" class="text-btn">@Html.ActionLink("Readmore", "Details", "Blog")<i class="icofont-double-right"></i></a>
+                                    <a href="#" class="comments"><i class="icofont-comment"></i><span>2</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                
+              
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section Ending Here -->

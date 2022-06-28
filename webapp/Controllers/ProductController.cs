@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PagedList;
+
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using webapp.Models;
+
 using System;
 
 namespace WepApp.Controllers
@@ -27,7 +30,7 @@ namespace WepApp.Controllers
 
         //}
 
-        public async Task<IActionResult> IndexAsync(int id,int page=0)
+        public async Task<IActionResult> Index(int id,int page=1)
         {
             var id2 = id>0 ? id : -1;
             var sanpham = _context.Sanphams.ToList().Skip((page-1)*6).Take(6);
@@ -36,10 +39,8 @@ namespace WepApp.Controllers
                 sanpham = _context.Sanphams.Where(m => m.Madm == id2).ToList();
             }
             ViewBag.Count = 0;
-            var n = (float)(_context.Sanphams.ToList().Count() / 6+1);
-            //ViewBag.PageSize = Math.Round((float)n);
-            ViewBag.PageSize = n;
-            ViewBag.Page = page;
+            var n = _context.Sanphams.ToList().Count() % 7;
+            ViewBag.PageSize = Math.Round((float)n);
             ViewBag.DanhMuc = _context.Danhmucs.ToList();
             return View(sanpham);
         }

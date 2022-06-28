@@ -1,0 +1,24 @@
+﻿@model webapp.Models.Dantoc
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Bạn có muốn xóa dân tộc này?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Tên dân tộc
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tendt)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Madt" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-warning" asp-action="Index">Back to List</a>
+    </form>
+</div>
