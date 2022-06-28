@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PagedList;
-
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using webapp.Models;
-
 using System;
 
 namespace WepApp.Controllers
@@ -21,8 +18,15 @@ namespace WepApp.Controllers
         {
             _context = new covid19Context();
         }
+        //public IActionResult Index(string search, int? page)
+        //{
+        //    var pageNumber = page ?? 1;
+        //    ViewBag.Count = _context.Sanphams.Where(s => s.Tensp.Contains(search)).Count();
+        //    ViewBag.Sanphams = _context.Sanphams.ToList().ToPagedList(pageNumber, 1);
+        //    return View(_context.Sanphams.Where(x => x.Tensp.Contains(search) || search == null).ToList());
 
-        public async Task<IActionResult> Index(int id,int page=1)
+        //}
+        public async Task<IActionResult> IndexAsync(int id,int page=0)
         {
             var id2 = id>0 ? id : -1;
             var sanpham = _context.Sanphams.ToList().Skip((page-1)*6).Take(6);
@@ -31,8 +35,10 @@ namespace WepApp.Controllers
                 sanpham = _context.Sanphams.Where(m => m.Madm == id2).ToList();
             }
             ViewBag.Count = 0;
-            var n = _context.Sanphams.ToList().Count() % 7;
-            ViewBag.PageSize = Math.Round((float)n);
+            var n = (float)(_context.Sanphams.ToList().Count() / 6+1);
+            //ViewBag.PageSize = Math.Round((float)n);
+            ViewBag.PageSize = n;
+            ViewBag.Page = page;
             ViewBag.DanhMuc = _context.Danhmucs.ToList();
             return View(sanpham);
         }
