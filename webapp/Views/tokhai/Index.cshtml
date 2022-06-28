@@ -20,25 +20,25 @@
     <div class="row">
         
         <table class="table thead-dark">
-            <thead>
+            <thead class="thead-primary" style="color:blue">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Dinhungdau)
+                        Nơi Đi
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Trieuchung)
+                        Triệu Chứng
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Txnguoibenh)
+                        Tiếp Xúc Người Bệnh
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Txnguoinuocbenh)
+                        Tùng qua nước có dịch
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Nguoicobieuhien)
+                        Biểu hiện bản thân
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.MakhNavigation)
+                        Tùy Chọn
                     </th>
                     <th></th>
                 </tr>
@@ -62,12 +62,8 @@
                         @Html.DisplayFor(modelItem => item.Nguoicobieuhien)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.MakhNavigation.Makh)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Matokhai">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Matokhai">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Matokhai">Delete</a>
+                        <a asp-action="Edit" class="btn btn-dark" asp-route-id="@item.Matokhai">Edit</a> |
+                        <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Matokhai">Details</a> |
                     </td>
                 </tr>
         }

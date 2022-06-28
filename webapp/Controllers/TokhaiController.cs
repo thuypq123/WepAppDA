@@ -40,7 +40,10 @@ namespace webapp.Controllers
         {
             try
             {
-                
+                var tokhai = new Tokhai();
+                tokhai.Makh = 1;
+                _context.Tokhais.Add(tokhai);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

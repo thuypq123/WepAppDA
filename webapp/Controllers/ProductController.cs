@@ -26,7 +26,6 @@ namespace WepApp.Controllers
         //    return View(_context.Sanphams.Where(x => x.Tensp.Contains(search) || search == null).ToList());
 
         //}
-
         public async Task<IActionResult> IndexAsync(int id,int page=0)
         {
             var id2 = id>0 ? id : -1;
