@@ -1,0 +1,57 @@
+﻿@model webapp.Models.Tokhai
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Tokhai</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Matokhai" />
+            <div class="form-group">
+                <label asp-for="Dinhungdau" class="control-label"></label>
+                <input asp-for="Dinhungdau" class="form-control" />
+                <span asp-validation-for="Dinhungdau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trieuchung" class="control-label"></label>
+                <input asp-for="Trieuchung" class="form-control" />
+                <span asp-validation-for="Trieuchung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Txnguoibenh" class="control-label"></label>
+                <input asp-for="Txnguoibenh" class="form-control" />
+                <span asp-validation-for="Txnguoibenh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Txnguoinuocbenh" class="control-label"></label>
+                <input asp-for="Txnguoinuocbenh" class="form-control" />
+                <span asp-validation-for="Txnguoinuocbenh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nguoicobieuhien" class="control-label"></label>
+                <input asp-for="Nguoicobieuhien" class="form-control" />
+                <span asp-validation-for="Nguoicobieuhien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Makh" class="control-label"></label>
+                <select asp-for="Makh" class="form-control" asp-items="ViewBag.Makh"></select>
+                <span asp-validation-for="Makh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

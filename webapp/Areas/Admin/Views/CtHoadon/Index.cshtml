@@ -1,0 +1,125 @@
+﻿@model IEnumerable<webapp.Models.CtHoadon>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dongia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaspNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MdhdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaspNavigation.Masp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MdhdNavigation.Mdhd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Mdhd }, new { id2 = item.Masp }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Mdhd }, new { id2 = item.Masp }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Mdhd }, new { id2 = item.Masp })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<div class="container-fluid px-4">
+    <center><h1 class="mt-4">Chi tiết hóa đơn</h1></center>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+        <li class="breadcrumb-item active">Chi tiết hoá đơn</li>
+    </ol>
+
+    <a asp-action="Create"><button type="button" class="btn btn-warning"><i class="fa-solid fa-money-bill-transfer"></i> Thêm chi tiết hoá đơn</button></a>
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 float-right">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Tìm kiếm..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary float-none" onclick="print()"><i class="fa-solid fa-print"></i> In danh sách</button>
+    <br><br>
+    <div class="card mb-4">
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Mã hóa đơn</th>
+                        <th colspan="3">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dongia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaspNavigation.Masp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MdhdNavigation.Mdhd)
+                    </td>
+                    @*<td>
+                        <a asp-action="Edit" asp-route-id="@item."><button type="button" class="btn btn-warning"><i class="fa-solid fa-pen"></i></button></a>
+                        <a asp-action="Details" asp-route-id="@item.Madt"><button type="button" class="btn btn-success"><i class="fa-solid fa-eye"></i></button></a>
+                        <a asp-action="Delete" asp-route-id="@item.Madt"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
+                    </td>*@
+                }
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+    <!-- pagination -->
+    <div>
+        <nav>
+            <ul class="pagination d-flex justify-content-center flex-wrap pagination-rounded-flat pagination-success">
+                <li class="page-item"><a class="page-link" href="#" data-abc="true"><i class="fa fa-angle-left"></i></a></li>
+                <li class="page-item active"><a class="page-link" href="#" data-abc="true">1</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-abc="true">2</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-abc="true">3</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-abc="true">4</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-abc="true"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div style="height: 20vh"></div>
+    <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
+</div>

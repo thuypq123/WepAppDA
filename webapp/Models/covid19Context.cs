@@ -17,7 +17,6 @@ namespace webapp.Models
         {
         }
 
-        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<CtHoadon> CtHoadons { get; set; }
         public virtual DbSet<Danhmuc> Danhmucs { get; set; }
@@ -29,6 +28,7 @@ namespace webapp.Models
         public virtual DbSet<Lienhe> Lienhes { get; set; }
         public virtual DbSet<Quoctich> Quoctiches { get; set; }
         public virtual DbSet<Sanpham> Sanphams { get; set; }
+        public virtual DbSet<Tkadmin> Tkadmins { get; set; }
         public virtual DbSet<Tokhai> Tokhais { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,42 +36,13 @@ namespace webapp.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BTJRTTO;Initial Catalog=covid19;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-7E0PDN3;Initial Catalog=covid19;Integrated Security=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Admin>(entity =>
-            {
-                entity.HasKey(e => e.Tk)
-                    .HasName("PK__ADMIN__3214E400AD5CE45F");
-
-                entity.ToTable("ADMIN");
-
-                entity.Property(e => e.Tk)
-                    .HasMaxLength(25)
-                    .IsUnicode(false)
-                    .HasColumnName("TK");
-
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("EMAIL");
-
-                entity.Property(e => e.Hoten)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("HOTEN")
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Mk)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false)
-                    .HasColumnName("MK");
-            });
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Blog>(entity =>
             {
@@ -225,6 +196,10 @@ namespace webapp.Models
                     .IsUnicode(false)
                     .HasColumnName("SDTNHAN")
                     .IsFixedLength(true);
+
+                entity.Property(e => e.Tinhtranggiaohang).HasColumnName("TINHTRANGGIAOHANG");
+
+                entity.Property(e => e.Tinhtrangthanhtoan).HasColumnName("TINHTRANGTHANHTOAN");
 
                 entity.Property(e => e.Tongtien)
                     .HasColumnType("money")
@@ -405,6 +380,37 @@ namespace webapp.Models
                     .HasForeignKey(d => d.Madm)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__SANPHAM__MADM__412EB0B6");
+            });
+
+            modelBuilder.Entity<Tkadmin>(entity =>
+            {
+                entity.HasKey(e => e.Tk)
+                    .HasName("PK__ADMIN__3214E400AD5CE45F");
+
+                entity.ToTable("TKADMIN");
+
+                entity.Property(e => e.Tk)
+                    .HasMaxLength(25)
+                    .IsUnicode(false)
+                    .HasColumnName("TK");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("EMAIL");
+
+                entity.Property(e => e.Hoten)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("HOTEN")
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Mk)
+                    .IsRequired()
+                    .HasMaxLength(25)
+                    .IsUnicode(false)
+                    .HasColumnName("MK");
             });
 
             modelBuilder.Entity<Tokhai>(entity =>

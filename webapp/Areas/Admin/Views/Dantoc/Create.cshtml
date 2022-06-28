@@ -1,0 +1,32 @@
+﻿@model webapp.Models.Dantoc
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<center>
+    <h1>Thêm mới dân tộc</h1>
+</center>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Tendt" class="control-label">Tên dân tộc</label>
+                <input asp-for="Tendt" class="form-control" />
+                <span asp-validation-for="Tendt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
+
