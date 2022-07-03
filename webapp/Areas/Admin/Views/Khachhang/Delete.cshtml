@@ -5,83 +5,82 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Xóa khách hàng</h1>
-
-<h3>Bạn muốn xóa khách hàng này?</h3>
-<div>
+<div class="container">
+    <h1>Xóa khách hàng</h1>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl class="row card">
+        <dt class="col-sm-2">
             Tên khách hàng
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tenkh)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Số điện thoại
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Sdt)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             CMND
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cmnd)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Địa chỉ
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Diachi)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Ảnh đại diện
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Anhdaidien)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Ngày sinh
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Ngaysinh)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Tài khoản
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tk)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Mật khẩu
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Mk)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Giới tính
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Gioitinh)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Dân tộc
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MadtNavigation.Tendt)
-        </dd class>
-        <dt class = "col-sm-2">
+        </dd>
+        <dt class="col-sm-2">
             Quốc tịch
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MaqtNavigation.Tenqt)
-        </dd class>
+        </dd>
+        
     </dl>
-    
     <form asp-action="Delete">
         <input type="hidden" asp-for="Makh" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a class="btn btn-primary" asp-action="Index">Back to List</a>
-    </form>
+    </form> 
+   
 </div>

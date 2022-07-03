@@ -4,44 +4,42 @@
     ViewData["Title"] = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-<center>
+
+<div class="container">
     <h1>Thêm mới tài khoản</h1>
-</center>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Tk" class="control-label">Tài khoản</label>
-                <input asp-for="Tk" class="form-control" />
-                <span asp-validation-for="Tk" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mk" class="control-label">Mật khẩu</label>
-                <input asp-for="Mk" class="form-control" />
-                <span asp-validation-for="Mk" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hoten" class="control-label">Tên </label>
-                <input asp-for="Hoten" class="form-control" />
-                <span asp-validation-for="Hoten" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <hr />
+    <div class="row card">
+        <div class="col-md-12">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Tk" class="control-label">Tài khoản</label>
+                    <input asp-for="Tk" class="form-control" />
+                    <span asp-validation-for="Tk" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mk" class="control-label">Mật khẩu</label>
+                    <input asp-for="Mk" class="form-control" />
+                    <span asp-validation-for="Mk" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hoten" class="control-label">Tên </label>
+                    <input asp-for="Hoten" class="form-control" />
+                    <span asp-validation-for="Hoten" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-warning">Back to List</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a class="btn btn-warning" asp-action="Ind
-<a href="C:\Users\minhm\source\repos\webapp - CLONE\webapp - CLONE\webapp\webapp\Areas\Admin\Views\Tkadmin\Delete.cshtml">C:\Users\minhm\source\repos\webapp - CLONE\webapp - CLONE\webapp\webapp\Areas\Admin\Views\Tkadmin\Delete.cshtml</a>ex">Back to List</a>
+
 </div>
 

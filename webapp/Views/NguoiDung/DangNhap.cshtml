@@ -6,7 +6,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Đăng nhập</title>
-    <link href="~/css/styleLogin.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/assets/css/fontawesome.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="overlay">
@@ -14,7 +16,6 @@
             <div class="con">
                 <!--     Start  header Content  -->
                 <header class="head-form">
-                    <h4 style="color:red;text-align:center">@ViewBag.ThongBao</h4>
                     <h2>Đăng nhập</h2>
                     <br />
                     <p>Sử dụng tài khoản và mật khẩu để đăng nhập</p>
@@ -41,12 +42,12 @@
                     <input class="form-input" name="pass" type="password" placeholder="Mật khẩu" id="pwd" required>
 
                     <!--      Show/hide password  -->
-                    @*<span>
-                        <i class="fas fa-eye" aria-hidden="true" type="button" id="eye"></i>
-                    </span>*@
+                    <span>
+                        <i class="fa-solid fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                    </span>
                     <br>
 
-
+                   
                     <!--        buttons -->
                     <!--      button LogIn -->
                     <button type="submit" class="log-in"> Đăng Nhập </button>
@@ -67,4 +68,4 @@
 
 </body>
 </html>
-<script src="~/js/login.js"></script>
+<script src="~/js/site.js"></script>

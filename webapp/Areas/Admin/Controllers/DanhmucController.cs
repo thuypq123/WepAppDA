@@ -61,7 +61,13 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(danhmuc);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+
             }
             return View(danhmuc);
         }
@@ -100,6 +106,7 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(danhmuc);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -143,6 +150,7 @@ namespace webapp.Areas.Admin.Controllers
             var danhmuc = await _context.Danhmucs.FindAsync(id);
             _context.Danhmucs.Remove(danhmuc);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 
