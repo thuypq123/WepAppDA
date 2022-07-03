@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using webapp.Areas.Admin.Controllers;
 using webapp.Models;
 
 namespace webapp.Controllers
@@ -19,8 +17,6 @@ namespace webapp.Controllers
         }
         public IActionResult DangKy()
         {
-            ViewData["Madt"] = new SelectList(context.Dantocs, "Madt", "Tendt");
-            ViewData["Maqt"] = new SelectList(context.Quoctiches, "Maqt", "Tenqt");
             return View();
         }
 
@@ -35,8 +31,6 @@ namespace webapp.Controllers
             string email = collection["email"];
             string sdt = collection["sdt"];
             string ngaysinh = String.Format("{0:MM/dd/YYYY}", collection["ngaysinh"]);
-            int quoctich = int.Parse(collection["quoctich"]);
-            int dantoc = int.Parse(collection["dantoc"]);
             if (matkhau != matkhaunhaplai)
             {
                 ViewData["Loi7"] = "Hai mật khẩu phải giống nhau";
@@ -45,13 +39,11 @@ namespace webapp.Controllers
             {
                 kh.Tenkh = hoten;
                 kh.Tk = tendn;
-                kh.Mk = PasswordHashMD5.ToMD5(matkhau);
+                kh.Mk = matkhau;
                 kh.Diachi = diachi;
                 kh.Sdt = sdt;
-                kh.Email = email;
+                //kh.email = email;
                 kh.Ngaysinh = DateTime.Parse(ngaysinh);
-                kh.Maqt = quoctich;
-                kh.Madt = dantoc;
                 context.Khachhangs.Add(kh);
                 context.SaveChanges();
                 return RedirectToAction("DangNhap");
@@ -68,7 +60,7 @@ namespace webapp.Controllers
         public IActionResult DangNhap(IFormCollection collection)
         {
             string tendn = collection["username"];
-            string matkhau = PasswordHashMD5.ToMD5(collection["pass"]);
+            string matkhau = collection["pass"];
             
             Khachhang kh = context.Khachhangs.SingleOrDefault(p => p.Tk == tendn && p.Mk == matkhau);
             if (kh != null)
@@ -77,10 +69,8 @@ namespace webapp.Controllers
                 SessionHelpers.SetObjAsJson(HttpContext.Session,"TaiKhoan", kh);
             }
             else
-            {
                 ViewBag.ThongBao = "Đăng nhập thất bại";
-                return this.View();
-            }
+
             return RedirectToAction("Index","Home");
         }
 

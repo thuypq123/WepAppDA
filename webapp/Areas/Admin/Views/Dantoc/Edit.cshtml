@@ -5,27 +5,29 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Sửa tên dân tộc</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Madt" />
-            <div class="form-group">
-                <label asp-for="Tendt" class="control-label">Tên dân tộc</label>
-                <input asp-for="Tendt" class="form-control" />
-                <span asp-validation-for="Tendt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <h1>Sửa tên dân tộc</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Madt" />
+                <div class="form-group">
+                    <label asp-for="Tendt" class="control-label">Tên dân tộc</label>
+                    <input asp-for="Tendt" class="form-control" />
+                    <span asp-validation-for="Tendt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+
 </div>
 

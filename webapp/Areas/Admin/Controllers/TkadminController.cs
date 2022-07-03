@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -59,10 +58,15 @@ namespace webapp.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                tkadmin.Mk = PasswordHashMD5.ToMD5(tkadmin.Mk);
                 _context.Add(tkadmin);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+
             }
             return View(tkadmin);
         }
@@ -101,6 +105,7 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(tkadmin);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -144,6 +149,7 @@ namespace webapp.Areas.Admin.Controllers
             var tkadmin = await _context.Tkadmins.FindAsync(id);
             _context.Tkadmins.Remove(tkadmin);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 
@@ -159,33 +165,6 @@ namespace webapp.Areas.Admin.Controllers
                 return View("Index", await _context.Tkadmins.Where(tk => tk.Tk.Contains(search)).ToListAsync());
             }    
             return RedirectToAction("Index", await _context.Tkadmins.ToListAsync());
-        }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Login(IFormCollection collection)
-        {
-            string tendn = collection["username"];
-            string matkhau = PasswordHashMD5.ToMD5(collection["pass"]);
-
-            Tkadmin admin = _context.Tkadmins.SingleOrDefault(p => p.Tk == tendn && p.Mk == matkhau);
-            if (admin != null)
-            {
-                ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
-                SessionHelpers.SetObjAsJson(HttpContext.Session, "Admin", admin);
-            }
-            else
-            {
-                ViewBag.ThongBao = "Đăng nhập thất bại";
-                return this.View();
-            }
-                
-
-            return RedirectToAction("Index", "Home");
         }
     }
 }

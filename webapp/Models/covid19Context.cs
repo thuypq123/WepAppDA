@@ -36,7 +36,7 @@ namespace webapp.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BTJRTTO;Initial Catalog=covid19;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-7E0PDN3;Initial Catalog=covid19;Integrated Security=True;");
             }
         }
 
@@ -47,7 +47,7 @@ namespace webapp.Models
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.HasKey(e => e.Mablog)
-                    .HasName("PK__BLOG__F7387DBC70772371");
+                    .HasName("PK__BLOG__F7387DBC1663F0F0");
 
                 entity.ToTable("BLOG");
 
@@ -78,13 +78,13 @@ namespace webapp.Models
                     .WithMany(p => p.Blogs)
                     .HasForeignKey(d => d.Tk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BLOG__TK__3B75D760");
+                    .HasConstraintName("FK__BLOG__TK__440B1D61");
             });
 
             modelBuilder.Entity<CtHoadon>(entity =>
             {
                 entity.HasKey(e => new { e.Masp, e.Mdhd })
-                    .HasName("PK__CT_HOADO__518DC7BD1BC5BB6D");
+                    .HasName("PK__CT_HOADO__518DC7BD2571AF2E");
 
                 entity.ToTable("CT_HOADON");
 
@@ -100,19 +100,19 @@ namespace webapp.Models
                     .WithMany(p => p.CtHoadons)
                     .HasForeignKey(d => d.Masp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CT_HOADON__MASP__3C69FB99");
+                    .HasConstraintName("FK__CT_HOADON__MASP__3F466844");
 
                 entity.HasOne(d => d.MdhdNavigation)
                     .WithMany(p => p.CtHoadons)
                     .HasForeignKey(d => d.Mdhd)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CT_HOADON__MDHD__3D5E1FD2");
+                    .HasConstraintName("FK__CT_HOADON__MDHD__403A8C7D");
             });
 
             modelBuilder.Entity<Danhmuc>(entity =>
             {
                 entity.HasKey(e => e.Madm)
-                    .HasName("PK__DANHMUC__603F005C47D9454B");
+                    .HasName("PK__DANHMUC__603F005CC93FF17E");
 
                 entity.ToTable("DANHMUC");
 
@@ -126,7 +126,7 @@ namespace webapp.Models
             modelBuilder.Entity<Dantoc>(entity =>
             {
                 entity.HasKey(e => e.Madt)
-                    .HasName("PK__DANTOC__603F005B7EDC5B7B");
+                    .HasName("PK__DANTOC__603F005B985094AA");
 
                 entity.ToTable("DANTOC");
 
@@ -140,7 +140,7 @@ namespace webapp.Models
             modelBuilder.Entity<Gopy>(entity =>
             {
                 entity.HasKey(e => e.Magy)
-                    .HasName("PK__GOPY__603F38B2C89BB32A");
+                    .HasName("PK__GOPY__603F38B2E91A9516");
 
                 entity.ToTable("GOPY");
 
@@ -166,7 +166,7 @@ namespace webapp.Models
             modelBuilder.Entity<Hoadon>(entity =>
             {
                 entity.HasKey(e => e.Mdhd)
-                    .HasName("PK__HOADON__1AF4D8F2E388B42F");
+                    .HasName("PK__HOADON__1AF4D8F233AED9E8");
 
                 entity.ToTable("HOADON");
 
@@ -204,13 +204,13 @@ namespace webapp.Models
                     .WithMany(p => p.Hoadons)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HOADON__MAKH__3F466844");
+                    .HasConstraintName("FK__HOADON__MAKH__3D5E1FD2");
             });
 
             modelBuilder.Entity<Hoso>(entity =>
             {
                 entity.HasKey(e => e.Mahs)
-                    .HasName("PK__HOSO__603F20DD666888C8");
+                    .HasName("PK__HOSO__603F20DD860E3575");
 
                 entity.ToTable("HOSO");
 
@@ -232,13 +232,13 @@ namespace webapp.Models
                     .WithMany(p => p.Hosos)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HOSO__MAKH__403A8C7D");
+                    .HasConstraintName("FK__HOSO__MAKH__3B75D760");
             });
 
             modelBuilder.Entity<Khachhang>(entity =>
             {
                 entity.HasKey(e => e.Makh)
-                    .HasName("PK__KHACHHAN__603F592C0E023378");
+                    .HasName("PK__KHACHHAN__603F592C48A1429F");
 
                 entity.ToTable("KHACHHANG");
 
@@ -297,7 +297,7 @@ namespace webapp.Models
                     .WithMany(p => p.Khachhangs)
                     .HasForeignKey(d => d.Madt)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__KHACHHANG__MADT__412EB0B6");
+                    .HasConstraintName("FK__KHACHHANG__MADT__4316F928");
 
                 entity.HasOne(d => d.MaqtNavigation)
                     .WithMany(p => p.Khachhangs)
@@ -309,7 +309,7 @@ namespace webapp.Models
             modelBuilder.Entity<Lienhe>(entity =>
             {
                 entity.HasKey(e => e.Malh)
-                    .HasName("PK__LIENHE__603F414D1C8D1BCD");
+                    .HasName("PK__LIENHE__603F414D2A72202B");
 
                 entity.ToTable("LIENHE");
 
@@ -337,7 +337,7 @@ namespace webapp.Models
             modelBuilder.Entity<Quoctich>(entity =>
             {
                 entity.HasKey(e => e.Maqt)
-                    .HasName("PK__QUOCTICH__602379EC8B46D9B5");
+                    .HasName("PK__QUOCTICH__602379EC34F38297");
 
                 entity.ToTable("QUOCTICH");
 
@@ -351,7 +351,7 @@ namespace webapp.Models
             modelBuilder.Entity<Sanpham>(entity =>
             {
                 entity.HasKey(e => e.Masp)
-                    .HasName("PK__SANPHAM__60228A3236251E9F");
+                    .HasName("PK__SANPHAM__60228A324B68BF4D");
 
                 entity.ToTable("SANPHAM");
 
@@ -379,13 +379,13 @@ namespace webapp.Models
                     .WithMany(p => p.Sanphams)
                     .HasForeignKey(d => d.Madm)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__SANPHAM__MADM__4316F928");
+                    .HasConstraintName("FK__SANPHAM__MADM__412EB0B6");
             });
 
             modelBuilder.Entity<Tkadmin>(entity =>
             {
                 entity.HasKey(e => e.Tk)
-                    .HasName("PK__TKADMIN__3214E4003252340C");
+                    .HasName("PK__TKADMIN__3214E400A7E8CC01");
 
                 entity.ToTable("TKADMIN");
 
@@ -411,7 +411,7 @@ namespace webapp.Models
             modelBuilder.Entity<Tokhai>(entity =>
             {
                 entity.HasKey(e => e.Matokhai)
-                    .HasName("PK__TOKHAI__D056C0E8CB847028");
+                    .HasName("PK__TOKHAI__D056C0E8340721D7");
 
                 entity.ToTable("TOKHAI");
 
@@ -437,7 +437,7 @@ namespace webapp.Models
                     .WithMany(p => p.Tokhais)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TOKHAI__MAKH__440B1D61");
+                    .HasConstraintName("FK__TOKHAI__MAKH__3C69FB99");
             });
 
             OnModelCreatingPartial(modelBuilder);
