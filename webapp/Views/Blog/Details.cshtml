@@ -1,0 +1,114 @@
+﻿@model webapp.Models.Blog
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=419209693446150&autoLogAppEvents=1" nonce="ZhXuGvSF"></script>
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2> Chi tiết tin tức</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Trang</a></li>
+                <li>Blog</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Blog Detail Start -->
+<div class="container py-5 px-2 bg-white">
+    <div class="row px-4">
+        <div class="col-12">
+            <img class="img-fluid mb-4" src="~/@Model.Anh" alt="Image">
+            <h2 class="mb-3 font-weight-bold">@Model.Tieude</h2>
+            <div class="d-flex">
+                <p class="mr-3 text-muted"><i class="fa fa-calendar-alt"></i> @Model.Ngaydang</p>
+                <p class="mr-3 text-muted"><i class="fa fa-folder"></i> @Model.Tk</p>
+                @*<p class="mr-3 text-muted"><i class="fa fa-comments"></i> 15 Comments</p>*@
+            </div>
+            <p>@Model.Noidung</p>
+
+            @*<h3 class="mb-3 font-weight-bold">Est dolor lorem et ea</h3>*@
+            @*<img class="w-50 float-left mr-4 mb-3" src="img/blog-1.jpg" alt="Image">*@
+            @*<p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos. Invidunt sed diam dolores takimata dolor dolore dolore sit. Sit ipsum erat amet lorem et, magna sea at sed et eos. Accusam eirmod kasd lorem clita sanctus ut consetetur et. Et duo tempor sea kasd clita ipsum et. Takimata kasd diam justo est eos erat aliquyam et ut. Ea sed sadipscing no justo et eos labore, gubergren ipsum magna dolor lorem dolore, elitr aliquyam takimata sea kasd dolores diam, amet et est accusam labore eirmod vero et voluptua. Amet labore clita duo et no. Rebum voluptua magna eos magna, justo gubergren labore sit voluptua eos. Dolores et no stet magna et gubergren amet dolor sit, lorem dolore est vero et.</p>*@
+        </div>
+        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+        @*<div class="col-12 py-4">
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Lorem</a>
+        </div>*@
+        @*<div class="col-12 py-4">
+            <div class="btn-group btn-group-lg w-100">
+                <button type="button" class="btn btn-outline-primary"><i class="fa fa-angle-left mr-2"></i> Previous</button>
+                <button type="button" class="btn btn-outline-primary">Next<i class="fa fa-angle-right ml-2"></i></button>
+            </div>
+        </div>
+        <div class="col-12 py-4">
+            <h3 class="mb-4 font-weight-bold">3 Comments</h3>
+            <div class="media mb-4">
+                <img src="img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle" style="width:60px;">
+                <div class="media-body">
+                    <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <button class="btn btn-sm btn-light">Reply</button>
+                </div>
+            </div>
+            <div class="media mb-4">
+                <img src="img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle"
+                     style="width:60px;">
+                <div class="media-body">
+                    <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <button class="btn btn-sm btn-light">Reply</button>
+                    <div class="media mt-4">
+                        <img src="img/user.jpg" alt="Image" class="mr-3 mt-1 rounded-circle"
+                             style="width:60px;">
+                        <div class="media-body">
+                            <h4>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                            <button class="btn btn-sm btn-light">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <h3 class="mb-4 font-weight-bold">Leave a comment</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Leave Comment" class="btn btn-primary">
+                </div>
+            </form>
+        </div>*@
+    </div>
+</div>
+<!-- Blog Detail End -->

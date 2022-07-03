@@ -33,6 +33,11 @@ namespace webapp
                     options.UseSqlServer(Configuration.GetConnectionString("dbcovid19")));
             //services.AddPaging();
             services.AddCoreAdmin();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,8 @@ namespace webapp
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

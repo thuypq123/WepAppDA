@@ -36,7 +36,7 @@ namespace webapp.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BTJRTTO;Initial Catalog=covid19;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-BTJRTTO;Initial Catalog=covid19;Integrated Security=True");
             }
         }
 
@@ -47,7 +47,7 @@ namespace webapp.Models
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.HasKey(e => e.Mablog)
-                    .HasName("PK__BLOG__F7387DBCA04443BD");
+                    .HasName("PK__BLOG__F7387DBC70772371");
 
                 entity.ToTable("BLOG");
 
@@ -72,20 +72,19 @@ namespace webapp.Models
                 entity.Property(e => e.Tk)
                     .IsRequired()
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("TK");
 
                 entity.HasOne(d => d.TkNavigation)
                     .WithMany(p => p.Blogs)
                     .HasForeignKey(d => d.Tk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BLOG__TK__440B1D61");
+                    .HasConstraintName("FK__BLOG__TK__3B75D760");
             });
 
             modelBuilder.Entity<CtHoadon>(entity =>
             {
                 entity.HasKey(e => new { e.Masp, e.Mdhd })
-                    .HasName("PK__CT_HOADO__518DC7BDC704019D");
+                    .HasName("PK__CT_HOADO__518DC7BD1BC5BB6D");
 
                 entity.ToTable("CT_HOADON");
 
@@ -101,19 +100,19 @@ namespace webapp.Models
                     .WithMany(p => p.CtHoadons)
                     .HasForeignKey(d => d.Masp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CT_HOADON__MASP__3F466844");
+                    .HasConstraintName("FK__CT_HOADON__MASP__3C69FB99");
 
                 entity.HasOne(d => d.MdhdNavigation)
                     .WithMany(p => p.CtHoadons)
                     .HasForeignKey(d => d.Mdhd)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__CT_HOADON__MDHD__403A8C7D");
+                    .HasConstraintName("FK__CT_HOADON__MDHD__3D5E1FD2");
             });
 
             modelBuilder.Entity<Danhmuc>(entity =>
             {
                 entity.HasKey(e => e.Madm)
-                    .HasName("PK__EN__603F005C2A52DB09");
+                    .HasName("PK__DANHMUC__603F005C47D9454B");
 
                 entity.ToTable("DANHMUC");
 
@@ -127,7 +126,7 @@ namespace webapp.Models
             modelBuilder.Entity<Dantoc>(entity =>
             {
                 entity.HasKey(e => e.Madt)
-                    .HasName("PK__DANTOC__603F005BA9E7B9E0");
+                    .HasName("PK__DANTOC__603F005B7EDC5B7B");
 
                 entity.ToTable("DANTOC");
 
@@ -141,7 +140,7 @@ namespace webapp.Models
             modelBuilder.Entity<Gopy>(entity =>
             {
                 entity.HasKey(e => e.Magy)
-                    .HasName("PK__GOPY__603F38B2A1DFBE63");
+                    .HasName("PK__GOPY__603F38B2C89BB32A");
 
                 entity.ToTable("GOPY");
 
@@ -149,17 +148,13 @@ namespace webapp.Models
 
                 entity.Property(e => e.Makh).HasColumnName("MAKH");
 
-                entity.Property(e => e.Noidung)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("NOIDUNG")
-                    .IsFixedLength(true);
+                entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
 
-                entity.Property(e => e.Tinhtrang)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("TINHTRANG")
-                    .IsFixedLength(true);
+                entity.Property(e => e.Tieude)
+                    .HasMaxLength(100)
+                    .HasColumnName("TIEUDE");
+
+                entity.Property(e => e.Tinhtrang).HasColumnName("TINHTRANG");
 
                 entity.HasOne(d => d.MakhNavigation)
                     .WithMany(p => p.Gopies)
@@ -171,7 +166,7 @@ namespace webapp.Models
             modelBuilder.Entity<Hoadon>(entity =>
             {
                 entity.HasKey(e => e.Mdhd)
-                    .HasName("PK__HOADON__1AF4D8F2B1458E9E");
+                    .HasName("PK__HOADON__1AF4D8F2E388B42F");
 
                 entity.ToTable("HOADON");
 
@@ -209,13 +204,13 @@ namespace webapp.Models
                     .WithMany(p => p.Hoadons)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HOADON__MAKH__3D5E1FD2");
+                    .HasConstraintName("FK__HOADON__MAKH__3F466844");
             });
 
             modelBuilder.Entity<Hoso>(entity =>
             {
                 entity.HasKey(e => e.Mahs)
-                    .HasName("PK__HOSO__603F20DD18F7F955");
+                    .HasName("PK__HOSO__603F20DD666888C8");
 
                 entity.ToTable("HOSO");
 
@@ -237,13 +232,13 @@ namespace webapp.Models
                     .WithMany(p => p.Hosos)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__HOSO__MAKH__3B75D760");
+                    .HasConstraintName("FK__HOSO__MAKH__403A8C7D");
             });
 
             modelBuilder.Entity<Khachhang>(entity =>
             {
                 entity.HasKey(e => e.Makh)
-                    .HasName("PK__KHACHHAN__603F592C8E3D8CCC");
+                    .HasName("PK__KHACHHAN__603F592C0E023378");
 
                 entity.ToTable("KHACHHANG");
 
@@ -262,6 +257,11 @@ namespace webapp.Models
                 entity.Property(e => e.Diachi)
                     .HasMaxLength(100)
                     .HasColumnName("DIACHI");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("EMAIL");
 
                 entity.Property(e => e.Gioitinh)
                     .HasMaxLength(5)
@@ -297,7 +297,7 @@ namespace webapp.Models
                     .WithMany(p => p.Khachhangs)
                     .HasForeignKey(d => d.Madt)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__KHACHHANG__MADT__4316F928");
+                    .HasConstraintName("FK__KHACHHANG__MADT__412EB0B6");
 
                 entity.HasOne(d => d.MaqtNavigation)
                     .WithMany(p => p.Khachhangs)
@@ -309,7 +309,7 @@ namespace webapp.Models
             modelBuilder.Entity<Lienhe>(entity =>
             {
                 entity.HasKey(e => e.Malh)
-                    .HasName("PK__LIENHE__603F414D11EA5BAB");
+                    .HasName("PK__LIENHE__603F414D1C8D1BCD");
 
                 entity.ToTable("LIENHE");
 
@@ -337,7 +337,7 @@ namespace webapp.Models
             modelBuilder.Entity<Quoctich>(entity =>
             {
                 entity.HasKey(e => e.Maqt)
-                    .HasName("PK__QUOCTICH__602379EC6ACC065C");
+                    .HasName("PK__QUOCTICH__602379EC8B46D9B5");
 
                 entity.ToTable("QUOCTICH");
 
@@ -351,7 +351,7 @@ namespace webapp.Models
             modelBuilder.Entity<Sanpham>(entity =>
             {
                 entity.HasKey(e => e.Masp)
-                    .HasName("PK__SANPHAM__60228A323A49FC72");
+                    .HasName("PK__SANPHAM__60228A3236251E9F");
 
                 entity.ToTable("SANPHAM");
 
@@ -379,19 +379,18 @@ namespace webapp.Models
                     .WithMany(p => p.Sanphams)
                     .HasForeignKey(d => d.Madm)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__SANPHAM__MADM__412EB0B6");
+                    .HasConstraintName("FK__SANPHAM__MADM__4316F928");
             });
 
             modelBuilder.Entity<Tkadmin>(entity =>
             {
                 entity.HasKey(e => e.Tk)
-                    .HasName("PK__ADMIN__3214E400AD5CE45F");
+                    .HasName("PK__TKADMIN__3214E4003252340C");
 
                 entity.ToTable("TKADMIN");
 
                 entity.Property(e => e.Tk)
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("TK");
 
                 entity.Property(e => e.Email)
@@ -400,23 +399,19 @@ namespace webapp.Models
                     .HasColumnName("EMAIL");
 
                 entity.Property(e => e.Hoten)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("HOTEN")
-                    .IsFixedLength(true);
+                    .HasMaxLength(40)
+                    .HasColumnName("HOTEN");
 
                 entity.Property(e => e.Mk)
                     .IsRequired()
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("MK");
             });
 
             modelBuilder.Entity<Tokhai>(entity =>
             {
                 entity.HasKey(e => e.Matokhai)
-                    .HasName("PK__TOKHAI__D056C0E80D305F78");
+                    .HasName("PK__TOKHAI__D056C0E8CB847028");
 
                 entity.ToTable("TOKHAI");
 
@@ -442,7 +437,7 @@ namespace webapp.Models
                     .WithMany(p => p.Tokhais)
                     .HasForeignKey(d => d.Makh)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TOKHAI__MAKH__3C69FB99");
+                    .HasConstraintName("FK__TOKHAI__MAKH__440B1D61");
             });
 
             OnModelCreatingPartial(modelBuilder);

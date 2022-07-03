@@ -11,16 +11,23 @@ namespace webapp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        private readonly covid19Context _context;
+
+        public HomeController()
         {
-            _logger = logger;
+            _context = new covid19Context();
         }
 
         public IActionResult Index()
         {
-            return View();
+            var blog = _context.Blogs.ToList();
+            return View(blog);
         }
 
         public IActionResult Privacy()

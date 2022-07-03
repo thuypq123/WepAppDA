@@ -7,9 +7,9 @@
 <section class="page-header">
     <div class="container">
         <div class="page-title">
-            <h2>Our Recent News</h2>
+            <h2>Tin Tức Mới Nhất</h2>
             <ul class="breadcrumb lab-ul">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Trang</a></li>
                 <li>Blog</li>
             </ul>
         </div>
@@ -30,14 +30,21 @@
                                 <a href="#"><img src="@item.Anh" alt="lab-blog"></a>
                             </div>
                             <div class="post-content">
-                                <h5><a href="#">@item.Tieude</a></h5>
+                                <h5><a href="/Blog/Details/@item.Mablog">@item.Tieude.Substring(0, 20) ...</a></h5>
                                 <div class="author-date">
                                     <a href="#" class="date"><i class="icofont-calendar"></i>@item.Ngaydang</a>
                                     <a href="#" class="admin"><i class="icofont-ui-user"></i>@item.Tk </a>
                                 </div>
-                                <p>@item.Noidung</p>
+                                @if (item.Noidung.Length < 50)
+                                {
+                                    <p>@item.Noidung</p>
+                                }
+                                else
+                                {
+                            <p>@item.Noidung.Substring(0, 50)...</p>
+                                }
                                 <div class="post-footer">
-                                    <a href="#" class="text-btn">@Html.ActionLink("Readmore", "Details", "Blog")<i class="icofont-double-right"></i></a>
+                                    <a href="/Blog/Details/@item.Mablog" class="text-btn">Read More<i class="icofont-double-right"></i></a>
                                     <a href="#" class="comments"><i class="icofont-comment"></i><span>2</span></a>
                                 </div>
                             </div>

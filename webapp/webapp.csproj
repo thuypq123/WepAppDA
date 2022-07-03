@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     <PackageReference Include="Codehaks.Pagination" Version="1.0.0" />
     <PackageReference Include="CoreAdmin" Version="1.0.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />

@@ -26,8 +26,8 @@ namespace WepApp.Controllers
             Gopy gopY = new Gopy()
             {
                 Makh = 1,
-                Noidung = Noidung,
-                Tinhtrang = Tinhtrang
+                Noidung = Noidung
+              
             };
             _context.Gopies.Add(gopY);
             await _context.SaveChangesAsync();
