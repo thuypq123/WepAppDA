@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using webapp.Models;
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -15,7 +17,6 @@
     <link rel="stylesheet" href="~/assets/css/lightcase.css">
     <link rel="stylesheet" href="~/assets/css/swiper.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <title>Covid-19</title>
 </head>
@@ -155,8 +156,10 @@
 
                                 <li>@Html.ActionLink("Liên Hệ", "index", "contact")</li>
                                 <li>@Html.ActionLink("Góp Ý", "feedback", "contact")</li>
+                                <li>@Html.ActionLink("Khai Báo", "index", "tokhai")</li>
                                 @*<li>@Html.ActionLink("Gop Y", "index", "contact")</li>*@
-                                <li><a href="/giohang/giohang"><i class="icofont-cart-alt"></i></a></li>
+                                <li><a href="/giohang/giohang"><i class="icofont-cart-alt"></i>@await Html.PartialAsync("CartPartial")</a></li>
+
                             </ul>
                         </div>
                         <!--<div class="header-btn">
@@ -165,9 +168,7 @@
                         @*@Html.ActionLink("Khai Bao", "index", "tokhai")*@
                         <!--</div>-->
                         <div class="header-btn">
-
-                            @*<a href="/nguoidung/dangnhap" class="lab-btn style-2"><span>Đăng Nhập</span></a>*@
-                            @*@Html.ActionLink("Khai Bao", "index", "tokhai")*@
+                            <a href="/nguoidung/dangnhap" class="lab-btn style-2"><span id="login">Đăng Nhập</span></a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +176,7 @@
         </div>
     </header>
     <!-- desktop menu ending here -->
-    <partial name="_Notification" />
+
     @RenderBody()
 
     <!-- Footer Section Start Here -->
@@ -294,6 +295,18 @@
     <script src="~/js/site.js"></script>
     <script src="~/assets/js/wow.min.js"></script>
     <script src="~/assets/js/functions.js"></script>
-
+    <script>
+        function Login() {
+            @{
+                Khachhang kh = SessionHelpers.GetObjFromJson<Khachhang>(Context.Session, "TaiKhoan");
+                
+            }
+            if (@kh != null) {
+                document.getElementById("login").innerHTML = "Đăng xuất";
+                console.log("a");
+            }
+        }
+        window.onload = Login();
+    </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model webapp.Models.Khachhang
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -6,8 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Đăng nhập</title>
-    <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/css/styleLogin.css" rel="stylesheet" />
 </head>
 <body>
     <div class="overlay">
@@ -30,24 +31,38 @@
                     <!--   Password -->
                     <!--   Password Input-->
                     <input class="form-input" name="pass" type="password" placeholder="Mật khẩu" id="pwd" required>
-                   
+
                     <!--   repeatpass -->
                     <input class="form-input" name="repeatpass" id="pwr" type="password" placeholder="Nhập lại mật khẩu" required>
-                  
+                    @ViewData["Loi1"]
+
                     <!--   dia chi -->
                     <input class="form-input" name="diachi" id="txt-input" type="text" placeholder="Địa chỉ" required>
                     <br>
                     <!--  email -->
-                    <input class="form-input" name="email" id="txt-input" type="email" placeholder="Email" required>
-                    <br>
+                    <div class="form-group">
+                        <input class="form-input" name="email" id="txt-input" type="email" placeholder="Email" required>
+                    </div>
+                    
+
                     <!--  sdt -->
-                    <input class="form-input" name="sdt" id="txt-input" type="text" placeholder="Số điện thoại" required>
-                    <br>
+                    <div class="form-group">
+                        <input class="form-input" name="sdt" id="txt-input" type="text" placeholder="Số điện thoại" required>
+                    </div>
+
                     <!--  ngaysinh -->
-                    <input class="form-input" name="ngaysinh" id="datetime" type="datetime-local" placeholder="Ngày sinh" required>
-                    <br>
-                    <!--        buttons -->
-                    <!--      button LogIn -->
+                    <div class="form-group">
+                        <input class="form-input" name="ngaysinh" id="datetime" type="datetime-local" placeholder="Ngày sinh" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select asp-for="Maqt" class="form-input" name="quoctich" asp-items="ViewBag.Maqt"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <select asp-for="Madt" class="form-input" name="dantoc" asp-items="ViewBag.Madt"></select>
+                    </div>
+
                     <button type="submit" class="log-in"> Đăng ký </button>
                 </div>
 
@@ -60,4 +75,4 @@
 
 </body>
 </html>
-<script src="~/js/site.js"></script>
+<script src="~/js/login.js"></script>
