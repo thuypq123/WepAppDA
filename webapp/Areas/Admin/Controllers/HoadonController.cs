@@ -48,7 +48,7 @@ namespace webapp.Areas.Admin.Controllers
         // GET: Admin/Hoadon/Create
         public IActionResult Create()
         {
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh");
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh");
             return View();
         }
 
@@ -63,14 +63,8 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(hoadon);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-            }
-
             ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", hoadon.Makh);
             return View(hoadon);
         }
@@ -110,7 +104,6 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(hoadon);
                     await _context.SaveChangesAsync();
-                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -156,7 +149,6 @@ namespace webapp.Areas.Admin.Controllers
             var hoadon = await _context.Hoadons.FindAsync(id);
             _context.Hoadons.Remove(hoadon);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

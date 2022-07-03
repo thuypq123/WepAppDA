@@ -60,13 +60,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(lienhe);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
             }
             return View(lienhe);
         }
@@ -105,7 +99,6 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(lienhe);
                     await _context.SaveChangesAsync();
-                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -149,7 +142,6 @@ namespace webapp.Areas.Admin.Controllers
             var lienhe = await _context.Lienhes.FindAsync(id);
             _context.Lienhes.Remove(lienhe);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

@@ -59,19 +59,13 @@ namespace webapp.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Makh,Tenkh,Sdt,Cmnd,Diachi,Email,Anhdaidien,Ngaysinh,Tk,Mk,Gioitinh,Maqt,Madt")] Khachhang khachhang)
+        public async Task<IActionResult> Create([Bind("Makh,Tenkh,Sdt,Cmnd,Diachi,Anhdaidien,Ngaysinh,Tk,Mk,Gioitinh,Maqt,Madt")] Khachhang khachhang)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(khachhang);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
             }
             ViewData["Madt"] = new SelectList(_context.Dantocs, "Madt", "Madt", khachhang.Madt);
             ViewData["Maqt"] = new SelectList(_context.Quoctiches, "Maqt", "Maqt", khachhang.Maqt);
@@ -101,7 +95,7 @@ namespace webapp.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Makh,Tenkh,Sdt,Cmnd,Diachi,Email,Anhdaidien,Ngaysinh,Tk,Mk,Gioitinh,Maqt,Madt")] Khachhang khachhang)
+        public async Task<IActionResult> Edit(int id, [Bind("Makh,Tenkh,Sdt,Cmnd,Diachi,Anhdaidien,Ngaysinh,Tk,Mk,Gioitinh,Maqt,Madt")] Khachhang khachhang)
         {
             if (id != khachhang.Makh)
             {
@@ -113,7 +107,6 @@ namespace webapp.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(khachhang);
-                    TempData["success"] = "Đã sửa thành công";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -162,7 +155,6 @@ namespace webapp.Areas.Admin.Controllers
             var khachhang = await _context.Khachhangs.FindAsync(id);
             _context.Khachhangs.Remove(khachhang);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

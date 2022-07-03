@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PagedList.Core;
 using webapp.Models;
 
 namespace webapp.Areas.Admin.Controllers
@@ -15,23 +13,17 @@ namespace webapp.Areas.Admin.Controllers
     public class SanphamController : Controller
     {
         private readonly covid19Context _context;
+
         public SanphamController(covid19Context context)
         {
             _context = context;
         }
 
         // GET: Admin/Sanpham
-        public async Task<IActionResult> Index(int? page)
+        public async Task<IActionResult> Index()
         {
-            //var covid19Context = _context.Sanphams.Include(s => s.MadmNavigation);
-            //return View(await covid19Context.);
-
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-            var pageSize = 3;
-            var lst = _context.Sanphams.Include(s => s.MadmNavigation);
-            PagedList<Sanpham> models = new PagedList<Sanpham>(lst, pageNumber, pageSize);
-            ViewBag.CurrentPage = pageNumber;
-            return View(models);
+            var covid19Context = _context.Sanphams.Include(s => s.MadmNavigation);
+            return View(await covid19Context.ToListAsync());
         }
 
         // GET: Admin/Sanpham/Details/5
@@ -55,9 +47,8 @@ namespace webapp.Areas.Admin.Controllers
 
         // GET: Admin/Sanpham/Create
         public IActionResult Create()
-        { 
-            ViewData["Madm"]
-            = new SelectList(_context.Danhmucs, "Madm", "Tendm");
+        {
+            ViewData["Madm"] = new SelectList(_context.Danhmucs, "Madm", "Madm");
             return View();
         }
 
@@ -71,19 +62,10 @@ namespace webapp.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(sanpham);
-                
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
-                return RedirectToAction(nameof(Index)); 
-                
+                return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
-            }
-            ViewData["Madm"] = new SelectList(_context.Danhmucs, "Madm", "Tendm", sanpham.Madm);
-            
+            ViewData["Madm"] = new SelectList(_context.Danhmucs, "Madm", "Madm", sanpham.Madm);
             return View(sanpham);
         }
 
@@ -100,7 +82,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Madm"] = new SelectList(_context.Danhmucs, "Madm", "Tendm", sanpham.Madm);
+            ViewData["Madm"] = new SelectList(_context.Danhmucs, "Madm", "Madm", sanpham.Madm);
             return View(sanpham);
         }
 
@@ -121,7 +103,6 @@ namespace webapp.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(sanpham);
-                    TempData["success"] = "Đã sửa thành công";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -168,27 +149,7 @@ namespace webapp.Areas.Admin.Controllers
             var sanpham = await _context.Sanphams.FindAsync(id);
             _context.Sanphams.Remove(sanpham);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
-            
-        }
-
-        public async Task<IActionResult> Search(string keyword, int? page)
-        {
-            var pageNumber = page == null || page <= 0 ? 1 : page.Value;
-            var pageSize = 3;
-            var lst = _context.Sanphams.Include(s => s.MadmNavigation).Where(sp => sp.Tensp.Contains(keyword));
-            PagedList<Sanpham> models = new PagedList<Sanpham>(lst, pageNumber, pageSize);
-            ViewBag.CurrentPage = pageNumber;
-
-            if (keyword == null)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View("Index", models);
-            }
         }
 
         private bool SanphamExists(int id)

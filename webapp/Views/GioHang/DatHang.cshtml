@@ -4,7 +4,7 @@
     ViewData["Title"] = "Đơn Đặt Hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/css/site.css" rel="stylesheet" />
+<link href="~/css/styleBank.css" rel="stylesheet" />
 <!-- Page Header Section Start Here -->
 <section class="page-header">
     <div class="container">
@@ -33,7 +33,6 @@
                             <th class="cat-toprice">Tổng cộng</th>
                             <th class="cat-edit">Chỉnh sửa</th>
                         </tr>
-                        
                     </thead>
                     @{
                         List<GioHang> lstgiohang = SessionHelpers.GetObjFromJson<List<GioHang>>(Context.Session, "GioHang");
@@ -78,35 +77,25 @@
                                 <h3>Thông Tin Người Nhận</h3>
                                 <form action="/GioHang/DatHang" method="post" class="outline-select">
                                     <label for="fname">Họ tên người nhận</label>
-                                    <input type="text" id="name" name="tenkh" value="Đào Nguyễn Ngọc Đức">
+                                    <input type="text" id="name" name="tenkh" value="@kh.Tenkh" required>
 
                                     <label for="lname">Địa chỉ nhận</label>
-                                    <input type="text" id="diachi" name="diachi" value="TP Hồ Chí Minh">
+                                    <input type="text" id="diachi" name="diachi" value="@kh.Diachi" required>
 
                                     <label for="lname">Số điện thoại nhận</label>
-                                    <input type="text" id="sdt" name="sdt" value="039388763">
+                                    <input type="text" id="sdt" name="sdt" value="@kh.Sdt" required>
                                     <label><input type="radio" name="paymentmethod" id="rdoCash" onchange="Divcontent()" value="CASH" checked />Tiền mặt</label>
                                     <label><input type="radio" name="paymentmethod" id="rdoNL" onchange="Divcontent()" value="NL" />TK Ngân Lượng</label>
 
                                     <label><input type="radio" name="paymentmethod" id="rdoBank" onchange="Divcontent()" value="ATM_ONLINE" />Thẻ ngân hàng</label>
 
                                     <label><input type="radio" name="paymentmethod" id="rdoVisa" onchange="Divcontent()" value="VISA" />VISA</label>
-
-                                    <label><input type="radio" name="paymentmethod" id="rdoMOMO" onchange="Divcontent()" value="NL" />MOMO</label>
-
                                     <div id="nganluongcontent" class="boxcontent" style="display:none;">
                                         <p>
                                             Thanh toán trực tuyến AN TOÀN và ĐƯỢC BẢO VỆ, sử dụng thẻ ngân hàng trong và ngoài nước hoặc nhiều hình thức tiện lợi khác.
                                             Được bảo hộ & cấp phép bởi NGÂN HÀNG NHÀ NƯỚC, ví điện tử duy nhất được cộng đồng ƯA THÍCH NHẤT 2 năm liên tiếp, Bộ Thông tin Truyền thông trao giải thưởng Sao Khuê
                                             <br />Giao dịch. Đăng ký ví NgânLượng.vn miễn phí <a href="https://www.nganluong.vn/?portal=nganluong&amp;page=user_register" target="_blank">tại đây</a>
                                         </p>
-                                    </div>
-                                    <div id="momocontent" class="boxcontent" style="display:none;">
-                                        <p>
-                                           <center><h1><b>QUÉT MÃ THANH TOÁN TẠI ĐÂY</b></h1></center>
-    <br />
-    <img src="~/assets/img/momopay.jpg" />
-</p>
                                     </div>
                                     <div id="bankcontent" class="boxcontent" style="display:none;">
                                         <p>
@@ -323,32 +312,14 @@
 </div>
 <!-- Shop Cart Page Section ending here -->
 <script>
-    @*$(function () {
-        $('input[name="thanhtoan"]').off('click').on('click', function () {
-            if ($(this).val() == 'nl') {
-                $('.boxcontent').hide();
-                $('#nganluongcontent').show();
-            }
-            else if ($(this).val() == bank) {
-                $('.boxcontent').hide();
-                $('#bankcontent').show();
-            }
-            else {
-                $('#nganluongcontent').hide();
-                $('#bankcontent').hide();
-            }
-        });
-    });*@
     function Divcontent() {
         if (document.getElementById('rdoNL').checked) {
             document.getElementById('nganluongcontent').style.display = 'block';
+            document.getElementById('bankcontent').style.display = 'none';
         }
         else if (document.getElementById('rdoBank').checked) {
             document.getElementById('nganluongcontent').style.display = 'none';
             document.getElementById('bankcontent').style.display = 'block';
-        }
-        else if (document.getElementById('rdoMOMO').checked) {
-            document.getElementById('momocontent').style.display = 'block';
         }
         else {
             document.getElementById('nganluongcontent').style.display = 'none';

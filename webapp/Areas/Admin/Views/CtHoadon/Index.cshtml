@@ -6,6 +6,52 @@
 }
 
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Dongia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soluong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaspNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MdhdNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaspNavigation.Masp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MdhdNavigation.Mdhd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Mdhd }, new { id2 = item.Masp }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Mdhd }, new { id2 = item.Masp }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Mdhd }, new { id2 = item.Masp })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
 
 <div class="container-fluid px-4">
     <center><h1 class="mt-4">Chi tiết hóa đơn</h1></center>

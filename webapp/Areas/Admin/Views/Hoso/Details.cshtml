@@ -5,38 +5,39 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="container">
-    <h1>Chi tiết hồ sơ</h1>
+<h1>Details</h1>
+
+<div>
+    <h4>Hoso</h4>
     <hr />
-    <dl class="row card">
-        <dt class="col-sm-2">
+    <dl class="row">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Ngaylap)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Ngaylap)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Khuvuc)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Khuvuc)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Tinhtrang)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Tinhtrang)
         </dd>
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MakhNavigation)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MakhNavigation.Tenkh)
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MakhNavigation.Makh)
         </dd>
     </dl>
-    <div>
-        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Mahs">Edit</a> |
-        <a asp-action="Index" class="btn btn-warning">Back to List</a>
-    </div>
 </div>
-
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Mahs">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -63,13 +63,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(gopy);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
             }
             ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", gopy.Makh);
             return View(gopy);
@@ -88,7 +82,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh", gopy.Makh);
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", gopy.Makh);
             return View(gopy);
         }
 
@@ -110,7 +104,6 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(gopy);
                     await _context.SaveChangesAsync();
-                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -156,7 +149,6 @@ namespace webapp.Areas.Admin.Controllers
             var gopy = await _context.Gopies.FindAsync(id);
             _context.Gopies.Remove(gopy);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

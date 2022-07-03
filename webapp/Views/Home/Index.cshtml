@@ -579,7 +579,12 @@
                                 <div class="post-content">
                                     <h5>
                                         <a href="#">
-                                            @Model[i].Tieude.Substring(0, 20) ...
+                                            @if (@Model[i].Tieude.Length>20)
+                                            {
+                                                @Model[i].Tieude.Substring(0, 20)
+                                            }else{
+                                                @Model[i].Tieude
+                                            }
                                         </a>
                                     </h5>
                                     <div class="author-date">

@@ -5,21 +5,21 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<h1>Chi tiết quốc tịch</h1>
 
-<div class="container">
-    <h1>Chi tiết quốc tịch</h1>
+<div>
+    <h4>Quoctich</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             Tên quốc tịch
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Tenqt)
         </dd>
     </dl>
-    <div>
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Maqt">Edit</a> |
-        <a class="btn btn-warning" asp-action="Index">Back to List</a>
-    </div>
 </div>
-
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Maqt">Edit</a> |
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>

@@ -48,7 +48,7 @@ namespace webapp.Areas.Admin.Controllers
         // GET: Admin/Tokhai/Create
         public IActionResult Create()
         {
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh");
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh");
             return View();
         }
 
@@ -63,13 +63,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(tokhai);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
             }
             ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", tokhai.Makh);
             return View(tokhai);
@@ -88,7 +82,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh", tokhai.Makh);
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", tokhai.Makh);
             return View(tokhai);
         }
 
@@ -110,7 +104,6 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(tokhai);
                     await _context.SaveChangesAsync();
-                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -156,7 +149,6 @@ namespace webapp.Areas.Admin.Controllers
             var tokhai = await _context.Tokhais.FindAsync(id);
             _context.Tokhais.Remove(tokhai);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

@@ -60,13 +60,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(quoctich);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                TempData["error"] = "Đã thêm thất bại";
-
             }
             return View(quoctich);
         }
@@ -105,7 +99,6 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(quoctich);
                     await _context.SaveChangesAsync();
-                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -149,7 +142,6 @@ namespace webapp.Areas.Admin.Controllers
             var quoctich = await _context.Quoctiches.FindAsync(id);
             _context.Quoctiches.Remove(quoctich);
             await _context.SaveChangesAsync();
-            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

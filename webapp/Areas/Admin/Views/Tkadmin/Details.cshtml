@@ -5,12 +5,11 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+<h1>Chi tiết tài khoản</h1>
 
-
-<div class="container">
-    <h1>Chi tiết tài khoản</h1>
+<div>
     <hr />
-    <dl class="row card">
+    <dl class="row">
         <dt class="col-sm-2">
             Tài khoản
         </dt>
@@ -36,9 +35,8 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
-    <div>
-        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Tk">Edit</a> |
-        <a class="btn btn-warning" asp-action="Index">Back to List</a>
-    </div>
 </div>
-
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Tk">Edit</a> |
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
