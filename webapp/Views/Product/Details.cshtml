@@ -11,7 +11,7 @@
 <section class="page-header">
     <div class="container">
         <div class="page-title">
-            <h2>Product Details Page</h2>
+            <h2>Chi Tiết Sản Phẩm</h2>
             <ul class="breadcrumb lab-ul">
                 <li><a href="index.html">Home</a></li>
                 <li>Shop Page</li>
@@ -87,37 +87,13 @@
                                 <h6>@Model.Tensp</h6>
                                 <p>@Model.Thongtin</p>
                                 <form>
-                                    @*<div class="select-product size">
-                                            <select>
-                                                <option>Select Size</option>
-                                                <option>SM</option>
-                                                <option>MD</option>
-                                                <option>LG</option>
-                                                <option>XL</option>
-                                                <option>XXL</option>
-                                            </select>
-                                            <i class="icofont-rounded-down"></i>
-                                        </div>
-                                        <div class="select-product color">
-                                            <select>
-                                                <option>Select Color</option>
-                                                <option>Pink</option>
-                                                <option>Ash</option>
-                                                <option>Red</option>
-                                                <option>White</option>
-                                                <option>Blue</option>
-                                            </select>
-                                            <i class="icofont-rounded-down"></i>
-                                        </div>*@
+
                                     <div class="cart-plus-minus">
                                         <div class="dec qtybutton">-</div>
                                         <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
                                         <div class="inc qtybutton">+</div>
                                     </div>
-                                    @*<div class="discount-code">
-                                            <input type="text" placeholder="Enter Discount Code">
-                                        </div>*@
-                                    <button type="submit" class="lab-btn"><span>Add To Cart</span></button>
+                                    <a href="@Url.Action("ThemGioHang", "GioHang", new { masp = Model.Masp, strURL = Url.PageLink()})" class="lab-btn"><span>Add To Cart</span></a>
                                 </form>
                             </div>
                         </div>

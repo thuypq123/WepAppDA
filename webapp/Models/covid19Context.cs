@@ -37,7 +37,7 @@ namespace webapp.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BTJRTTO;Initial Catalog=covid19;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-7E0PDN3;Initial Catalog=covid19;Integrated Security=True;");
             }
         }
 
@@ -48,7 +48,7 @@ namespace webapp.Models
             modelBuilder.Entity<Blog>(entity =>
             {
                 entity.HasKey(e => e.Mablog)
-                    .HasName("PK__BLOG__F7387DBCA04443BD");
+                    .HasName("PK__BLOG__F7387DBC1663F0F0");
 
                 entity.ToTable("BLOG");
 
@@ -73,7 +73,6 @@ namespace webapp.Models
                 entity.Property(e => e.Tk)
                     .IsRequired()
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("TK");
 
                 entity.HasOne(d => d.TkNavigation)
@@ -86,7 +85,7 @@ namespace webapp.Models
             modelBuilder.Entity<CtHoadon>(entity =>
             {
                 entity.HasKey(e => new { e.Masp, e.Mdhd })
-                    .HasName("PK__CT_HOADO__518DC7BDC704019D");
+                    .HasName("PK__CT_HOADO__518DC7BD2571AF2E");
 
                 entity.ToTable("CT_HOADON");
 
@@ -114,7 +113,7 @@ namespace webapp.Models
             modelBuilder.Entity<Danhmuc>(entity =>
             {
                 entity.HasKey(e => e.Madm)
-                    .HasName("PK__EN__603F005C2A52DB09");
+                    .HasName("PK__DANHMUC__603F005CC93FF17E");
 
                 entity.ToTable("DANHMUC");
 
@@ -128,7 +127,7 @@ namespace webapp.Models
             modelBuilder.Entity<Dantoc>(entity =>
             {
                 entity.HasKey(e => e.Madt)
-                    .HasName("PK__DANTOC__603F005BA9E7B9E0");
+                    .HasName("PK__DANTOC__603F005B985094AA");
 
                 entity.ToTable("DANTOC");
 
@@ -142,7 +141,7 @@ namespace webapp.Models
             modelBuilder.Entity<Gopy>(entity =>
             {
                 entity.HasKey(e => e.Magy)
-                    .HasName("PK__GOPY__603F38B2A1DFBE63");
+                    .HasName("PK__GOPY__603F38B2E91A9516");
 
                 entity.ToTable("GOPY");
 
@@ -150,17 +149,13 @@ namespace webapp.Models
 
                 entity.Property(e => e.Makh).HasColumnName("MAKH");
 
-                entity.Property(e => e.Noidung)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("NOIDUNG")
-                    .IsFixedLength(true);
+                entity.Property(e => e.Noidung).HasColumnName("NOIDUNG");
 
-                entity.Property(e => e.Tinhtrang)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("TINHTRANG")
-                    .IsFixedLength(true);
+                entity.Property(e => e.Tieude)
+                    .HasMaxLength(100)
+                    .HasColumnName("TIEUDE");
+
+                entity.Property(e => e.Tinhtrang).HasColumnName("TINHTRANG");
 
                 entity.HasOne(d => d.MakhNavigation)
                     .WithMany(p => p.Gopies)
@@ -172,7 +167,7 @@ namespace webapp.Models
             modelBuilder.Entity<Hoadon>(entity =>
             {
                 entity.HasKey(e => e.Mdhd)
-                    .HasName("PK__HOADON__1AF4D8F2B1458E9E");
+                    .HasName("PK__HOADON__1AF4D8F233AED9E8");
 
                 entity.ToTable("HOADON");
 
@@ -216,7 +211,7 @@ namespace webapp.Models
             modelBuilder.Entity<Hoso>(entity =>
             {
                 entity.HasKey(e => e.Mahs)
-                    .HasName("PK__HOSO__603F20DD18F7F955");
+                    .HasName("PK__HOSO__603F20DD860E3575");
 
                 entity.ToTable("HOSO");
 
@@ -244,7 +239,7 @@ namespace webapp.Models
             modelBuilder.Entity<Khachhang>(entity =>
             {
                 entity.HasKey(e => e.Makh)
-                    .HasName("PK__KHACHHAN__603F592C8E3D8CCC");
+                    .HasName("PK__KHACHHAN__603F592C48A1429F");
 
                 entity.ToTable("KHACHHANG");
 
@@ -263,6 +258,11 @@ namespace webapp.Models
                 entity.Property(e => e.Diachi)
                     .HasMaxLength(100)
                     .HasColumnName("DIACHI");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("EMAIL");
 
                 entity.Property(e => e.Gioitinh)
                     .HasMaxLength(5)
@@ -310,7 +310,7 @@ namespace webapp.Models
             modelBuilder.Entity<Lienhe>(entity =>
             {
                 entity.HasKey(e => e.Malh)
-                    .HasName("PK__LIENHE__603F414D11EA5BAB");
+                    .HasName("PK__LIENHE__603F414D2A72202B");
 
                 entity.ToTable("LIENHE");
 
@@ -338,7 +338,7 @@ namespace webapp.Models
             modelBuilder.Entity<Quoctich>(entity =>
             {
                 entity.HasKey(e => e.Maqt)
-                    .HasName("PK__QUOCTICH__602379EC6ACC065C");
+                    .HasName("PK__QUOCTICH__602379EC34F38297");
 
                 entity.ToTable("QUOCTICH");
 
@@ -352,7 +352,7 @@ namespace webapp.Models
             modelBuilder.Entity<Sanpham>(entity =>
             {
                 entity.HasKey(e => e.Masp)
-                    .HasName("PK__SANPHAM__60228A323A49FC72");
+                    .HasName("PK__SANPHAM__60228A324B68BF4D");
 
                 entity.ToTable("SANPHAM");
 
@@ -386,13 +386,12 @@ namespace webapp.Models
             modelBuilder.Entity<Tkadmin>(entity =>
             {
                 entity.HasKey(e => e.Tk)
-                    .HasName("PK__ADMIN__3214E400AD5CE45F");
+                    .HasName("PK__TKADMIN__3214E400A7E8CC01");
 
                 entity.ToTable("TKADMIN");
 
                 entity.Property(e => e.Tk)
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("TK");
 
                 entity.Property(e => e.Email)
@@ -401,23 +400,19 @@ namespace webapp.Models
                     .HasColumnName("EMAIL");
 
                 entity.Property(e => e.Hoten)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("HOTEN")
-                    .IsFixedLength(true);
+                    .HasMaxLength(40)
+                    .HasColumnName("HOTEN");
 
                 entity.Property(e => e.Mk)
                     .IsRequired()
                     .HasMaxLength(25)
-                    .IsUnicode(false)
                     .HasColumnName("MK");
             });
 
             modelBuilder.Entity<Tokhai>(entity =>
             {
                 entity.HasKey(e => e.Matokhai)
-                    .HasName("PK__TOKHAI__D056C0E80D305F78");
+                    .HasName("PK__TOKHAI__D056C0E8340721D7");
 
                 entity.ToTable("TOKHAI");
 

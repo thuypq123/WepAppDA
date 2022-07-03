@@ -50,38 +50,17 @@
                         @Html.DisplayFor(modelItem => item.Dinhungdau)
                     </td>
                     <td>
-
-                        @if(item.Trieuchung=="true"){
-                            <span style=" width: 80px" class="btn btn-danger">CÓ</span>
-                        }
-                        else
-                        {
-                            <span style=" width: 80px" class="btn btn-success">KHÔNG</span>
-                        }
+                        @Html.DisplayFor(modelItem => item.Trieuchung)
+                    </td>
                     <td>
-                        @if(item.Trieuchung=="true"){
-                            <span style=" width: 80px" class="btn btn-danger">CÓ</span>
-                        }
-                        else
-                        {
-                            <span style=" width: 80px" class="btn btn-success">không</span>
-                        }
+                        @Html.DisplayFor(modelItem => item.Txnguoibenh)
+                    </td>
                     <td>
-                        @if(item.Txnguoinuocbenh == true){
-                            <span style=" width: 80px" class="btn btn-danger">CÓ</span>
-                        }
-                        else
-                        {
-                            <span style=" width: 80px" class="btn btn-success">KHÔNG</span>
-                        }
+                        @Html.DisplayFor(modelItem => item.Txnguoinuocbenh)
+                    </td>
                     <td>
-                        @if(item.Nguoicobieuhien==true){
-                                <span style=" width: 80px" class="btn btn-danger">CÓ</span>
-                            }
-                        else
-                        {
-                            <span style=" width: 80px" class="btn btn-success">KHÔNG</span>
-                        }
+                        @Html.DisplayFor(modelItem => item.Nguoicobieuhien)
+                    </td>
                     <td>
                         <a asp-action="Edit" class="btn btn-dark" asp-route-id="@item.Matokhai">Edit</a> |
                         <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Matokhai">Details</a> |
@@ -90,9 +69,6 @@
         }
             </tbody>
         </table>
-        <div class="create" style="">
-            <a asp-action="Create" class="btn btn-primary">Tạo tờ khai</a>
-        </div>
     </div>
 </div>
 

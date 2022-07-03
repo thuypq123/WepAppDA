@@ -48,7 +48,7 @@ namespace webapp.Areas.Admin.Controllers
         // GET: Admin/Hoso/Create
         public IActionResult Create()
         {
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh");
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh");
             return View();
         }
 
@@ -63,7 +63,13 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(hoso);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+
             }
             ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", hoso.Makh);
             return View(hoso);
@@ -82,7 +88,7 @@ namespace webapp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Makh", hoso.Makh);
+            ViewData["Makh"] = new SelectList(_context.Khachhangs, "Makh", "Tenkh", hoso.Makh);
             return View(hoso);
         }
 
@@ -104,6 +110,7 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(hoso);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -149,6 +156,7 @@ namespace webapp.Areas.Admin.Controllers
             var hoso = await _context.Hosos.FindAsync(id);
             _context.Hosos.Remove(hoso);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

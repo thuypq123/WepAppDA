@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="~/assets/css/lightcase.css">
     <link rel="stylesheet" href="~/assets/css/swiper.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <title>Covid-19</title>
 </head>
@@ -38,54 +39,54 @@
                 <div class="mobile-menu-area-inner">
                     <ul class="lab-ul">
                         <li class="active">
-                            @Html.ActionLink("Home", "", "/")
-                            @*<ul class="lab-ul">
-                                    <li><a href="index.html">Home Style One</a></li>
-                                    <li><a href="index-2.html">Home Style Two</a></li>
-                                    <li class="active"><a href="index-3.html">Home Style Three</a></li>
-                                    <li><a href="index-4.html">Home Style Four <sup>New</sup></a></li>
-                                    <li><a href="index-5.html">Home Style Five <sup>New</sup></a></li>
-                                    <li><a href="index-6.html">Home Style Six <sup>New</sup></a></li>
-                                    <li><a href="index-7.html">Home Style Seven <sup>New</sup></a></li>
-                                    <li><a href="one-page.html">One Page</a></li>
-                                    <li><a href="index-box.html">Box Layout</a></li>
-                                    <li><a href="http://demos.codexcoder.com/labartisan/html/covid-19-rtl/index.html">Rtl Layout</a></li>
-                                </ul>*@
+                        <li><a href="/">Trang Chủ</a></li>
+                        @*<ul class="lab-ul">
+                                <li><a href="index.html">Home Style One</a></li>
+                                <li><a href="index-2.html">Home Style Two</a></li>
+                                <li class="active"><a href="index-3.html">Home Style Three</a></li>
+                                <li><a href="index-4.html">Home Style Four <sup>New</sup></a></li>
+                                <li><a href="index-5.html">Home Style Five <sup>New</sup></a></li>
+                                <li><a href="index-6.html">Home Style Six <sup>New</sup></a></li>
+                                <li><a href="index-7.html">Home Style Seven <sup>New</sup></a></li>
+                                <li><a href="one-page.html">One Page</a></li>
+                                <li><a href="index-box.html">Box Layout</a></li>
+                                <li><a href="http://demos.codexcoder.com/labartisan/html/covid-19-rtl/index.html">Rtl Layout</a></li>
+                            </ul>*@
                         </li>
-                        <li>
-                            <a href="#">Pages</a>
-                            <ul class="lab-ul">
-                                <li>
-                                    <a href="#0">About Page</a>
-                                    <ul class="lab-ul">
-                                        <li><a href="about.html">About Style 1</a></li>
-                                        <li><a href="about-2.html">About Style 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="faq.html">Faq</a></li>
-                                <li><a href="outbreak.html">Outbreak</a></li>
-                                <li><a href="coming-soon.html">ComingSoon</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/Prevention">Prevention</a></li>
+                        @*<li>
+                                <a href="#">Pages</a>
+                                <ul class="lab-ul">
+                                    <li>
+                                        <a href="#0">About Page</a>
+                                        <ul class="lab-ul">
+                                            <li><a href="about.html">About Style 1</a></li>
+                                            <li><a href="about-2.html">About Style 2</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="outbreak.html">Outbreak</a></li>
+                                    <li><a href="coming-soon.html">ComingSoon</a></li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                </ul>
+                            </li>*@
+                        <li><a href="/Prevention">Phòng Ngừa</a></li>
                         <li>
                             <a href="#">Blog</a>
                             <ul class="lab-ul">
                                 <li>@Html.ActionLink("Blog", "index", "Blog")</li>
-                          
+
                             </ul>
                         </li>
                         <li>
-                            <a href="#0">Shop</a>
+                            <a href="/Product">Cửa Hàng</a>
                             <ul class="lab-ul">
-                                <li>@Html.ActionLink("Product page", "index", "product")</li>
+                                <li>@Html.ActionLink("Sản phẩm", "index", "product")</li>
                                 <li>@Html.ActionLink("Product single", "Details", "product")</li>
-                                <li>@Html.ActionLink("Product cart", "Pagecarts", "product")</li>
+                                <li>@Html.ActionLink("Giỏ Hàng", "GioHang", "GioHang")</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li>@Html.ActionLink("Gop Y", "index", "contact")</li>
+                        <li><a href="/contact">Liên hệ</a></li>
+                        <li>@Html.ActionLink("Góp ý", "index", "contact")</li>
                     </ul>
                 </div>
             </div>
@@ -104,59 +105,69 @@
                         <div class="main-menu">
                             <ul class="lab-ul">
                                 <li class="active">
-                                    @Html.ActionLink("Home", "", "/")
-                                    <!--<li class="active"><a href="index-3.html">Home Style Three</a></li>-->
-                                    @*<ul class="lab-ul">
-                                            <li><a href="index.html">Home Style One</a></li>
-                                            <li><a href="index-2.html">Home Style Two</a></li>
-                                            <li class="active"><a href="index-3.html">Home Style Three</a></li>
-                                            <li><a href="index-4.html">Home Style Four <sup>New</sup></a></li>
-                                            <li><a href="index-5.html">Home Style Five <sup>New</sup></a></li>
-                                            <li><a href="index-6.html">Home Style Six <sup>New</sup></a></li>
-                                            <li><a href="index-7.html">Home Style Seven <sup>New</sup></a></li>
-                                            <li><a href="one-page.html">One Page</a></li>
-                                            <li><a href="index-box.html">Box Layout</a></li>
-                                            <li><a href="http://demos.codexcoder.com/labartisan/html/covid-19-rtl/index.html">Rtl Layout</a></li>
+                                <li><a href="/">Trang Chủ</a></li>
+                                <!--<li class="active"><a href="index-3.html">Home Style Three</a></li>-->
+                                @*<ul class="lab-ul">
+                                        <li><a href="index.html">Home Style One</a></li>
+                                        <li><a href="index-2.html">Home Style Two</a></li>
+                                        <li class="active"><a href="index-3.html">Home Style Three</a></li>
+                                        <li><a href="index-4.html">Home Style Four <sup>New</sup></a></li>
+                                        <li><a href="index-5.html">Home Style Five <sup>New</sup></a></li>
+                                        <li><a href="index-6.html">Home Style Six <sup>New</sup></a></li>
+                                        <li><a href="index-7.html">Home Style Seven <sup>New</sup></a></li>
+                                        <li><a href="one-page.html">One Page</a></li>
+                                        <li><a href="index-box.html">Box Layout</a></li>
+                                        <li><a href="http://demos.codexcoder.com/labartisan/html/covid-19-rtl/index.html">Rtl Layout</a></li>
+                                    </ul>*@
+                                <!--</li>-->
+                                <li>
+                                    @*<a href="#">Pages</a>
+                                        <ul class="lab-ul">
+                                            <li>
+                                                <a href="#0">About Page</a>
+                                                <ul class="lab-ul">
+                                                    <li><a href="about.html">About Style 1</a></li>
+                                                    <li><a href="about-2.html">About Style 2</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="faq.html">Faq</a></li>
+                                            <li><a href="outbreak.html">Outbreak</a></li>
+                                            <li><a href="coming-soon.html">ComingSoon</a></li>
+                                            <li><a href="404.html">404 Page</a></li>
                                         </ul>*@
-                                    <!--</li>-->
-                                <li>
-                                    <a href="#">Pages</a>
-                                    <ul class="lab-ul">
-                                        <li>
-                                            <a href="#0">About Page</a>
-                                            <ul class="lab-ul">
-                                                <li><a href="about.html">About Style 1</a></li>
-                                                <li><a href="about-2.html">About Style 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="faq.html">Faq</a></li>
-                                        <li><a href="outbreak.html">Outbreak</a></li>
-                                        <li><a href="coming-soon.html">ComingSoon</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                    </ul>
                                 </li>
-                                <li><a href="/Prevention">Prevention</a></li>
+                                <li><a href="/Prevention">Phòng Ngừa</a></li>
                                 <li>
-                                    <a href="#">Blog</a>
-                                    <ul class="lab-ul">
-                                        <li>@Html.ActionLink("Blog", "index", "Blog")</li>
-                                        
-                                    </ul>
+                                    <a href="/Blog">Blog</a>
+                                    <!--<ul class="lab-ul">-->
+                                    @*<li>@Html.ActionLink("Blog", "index", "Blog")</li>*@
+
+                                    <!--</ul>-->
                                 </li>
                                 <li>
-                                    <a href="#0">Shop</a>
-                                    <ul class="lab-ul">
-                                        <li>@Html.ActionLink("Product page", "index", "product")</li>
-                                        <li>@Html.ActionLink("Product single", "Details", "product")</li>
-                                        <li>@Html.ActionLink("Product cart", "Pagecarts", "product")</a></li>
-                                    </ul>
+                                    <a href="/Product">Cửa Hàng</a>
+                                    @*<ul class="lab-ul">
+                                            <li>@Html.ActionLink("Product page", "index", "product")</li>
+                                            <li>@Html.ActionLink("Product single", "Details", "product")</li>
+                                            <li>@Html.ActionLink("Product cart", "Pagecarts", "product")</a></li>
+                                        </ul>*@
                                 </li>
+
                                 <li>@Html.ActionLink("Liên Hệ", "index", "contact")</li>
                                 <li>@Html.ActionLink("Góp Ý", "feedback", "contact")</li>
+                                @*<li>@Html.ActionLink("Gop Y", "index", "contact")</li>*@
+                                <li><a href="/giohang/giohang"><i class="icofont-cart-alt"></i></a></li>
                             </ul>
                         </div>
+                        <!--<div class="header-btn">
+
+                            <a href="/tokhai" class="lab-btn style-2"><span>Bạn bị bệnh?</span></a>-->
+                        @*@Html.ActionLink("Khai Bao", "index", "tokhai")*@
+                        <!--</div>-->
                         <div class="header-btn">
-                            <a href="/tokhai" class="lab-btn style-2"><span>are you sick</span></a>
+
+                            @*<a href="/nguoidung/dangnhap" class="lab-btn style-2"><span>Đăng Nhập</span></a>*@
+                            @*@Html.ActionLink("Khai Bao", "index", "tokhai")*@
                         </div>
                     </div>
                 </div>
@@ -164,7 +175,7 @@
         </div>
     </header>
     <!-- desktop menu ending here -->
-
+    <partial name="_Notification" />
     @RenderBody()
 
     <!-- Footer Section Start Here -->
@@ -177,18 +188,18 @@
                             <div class="footer-inner">
                                 <div class="footer-content">
                                     <div class="title">
-                                        <h6>About Covid-19</h6>
+                                        <h6>Giới thiệu về Covid-19</h6>
                                     </div>
                                     <div class="content">
-                                        <p>We believe in Simple Creative and Flexible Design Standards.</p>
-                                        <h6>Headquarters:</h6>
-                                        <p>795 Folsom Ave, Suite 600 San Francisco, CA 94107</p>
+                                        <p>Chúng tôi tin tưởng vào Tiêu chuẩn thiết kế sáng tạo và linh hoạt đơn giản.</p>
+                                        <h6>Trụ sở chính:</h6>
+                                        <p>475A Điện Biên Phủ, phường 26, quận Bình Thạnh,TP.HCM</p>
                                         <ul class="lab-ul">
                                             <li>
-                                                <p><span>Phone:</span>(91) 8547 632521</p>
+                                                <p><span>Phone:</span>(028) 123456789</p>
                                             </li>
                                             <li>
-                                                <p><span>Email:</span><a href="#">info@covid-19.com</a></p>
+                                                <p><span>Email:</span><a href="#">Daotao.hutech.edu.vn</a></p>
                                             </li>
                                         </ul>
                                     </div>
@@ -283,5 +294,6 @@
     <script src="~/js/site.js"></script>
     <script src="~/assets/js/wow.min.js"></script>
     <script src="~/assets/js/functions.js"></script>
+
 </body>
 </html>

@@ -5,10 +5,10 @@
 <section class="page-header">
     <div class="container">
         <div class="page-title">
-            <h2>Products Page</h2>
+            <h2>Trang sản Phẩm</h2>
             <ul class="breadcrumb lab-ul">
-                <li><a href="index.html">Home</a></li>
-                <li>Shop Page</li>
+                <li><a href="index.html">Trang</a></li>
+                <li>Cửa Hàng</li>
             </ul>
         </div>
     </div>
@@ -38,7 +38,7 @@
                                     <div class="product-action-link">
                                         <a class="view-modal" data-target="#quick_view"><i class="icofont-eye"></i></a>
                                         <a href="#"><i class="icofont-heart"></i></a>
-                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                        <a href="@Url.Action("ThemGioHang", "GioHang", new { masp = item.Masp, strURL = Url.PageLink()})"><i class="icofont-cart-alt"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -57,7 +57,7 @@
                                     <div class="product-action-link">
                                         <a class="view-modal" data-target="#quick_view"><i class="icofont-eye"></i></a>
                                         <a href="#"><i class="icofont-heart"></i></a>
-                                        <a href="#"><i class="icofont-cart-alt"></i></a>
+                                        <a href="@Url.Action("ThemGioHang", "GioHang", new { masp = item.Masp, strURL = Url.PageLink()})"><i class="icofont-cart-alt"></i></a>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -124,7 +124,7 @@
                             <ul class="lab-ul">
                                 <li>
                                     <div class="product-thumb">
-                                        <img src="assets/images/shop/01.jpg" alt="shop">
+                                        <img src="~/assets/images/shop/01.jpg" alt="shop">
                                     </div>
                                     <div class="product-content">
                                         <h6><a href="#">Product Title Here</a></h6>
@@ -134,7 +134,7 @@
                                 </li>
                                 <li>
                                     <div class="product-thumb">
-                                        <img src="assets/images/product/Que-test-nhanh-Biomerica.jpg" alt="shop">
+                                        <img src="~/assets/images/product/Que-test-nhanh-Biomerica.jpg" alt="shop">
                                     </div>
                                     <div class="product-content">
                                         <h6><a href="#">Product Title Here</a></h6>
@@ -144,7 +144,7 @@
                                 </li>
                                 <li>
                                     <div class="product-thumb">
-                                        <img src="assets/images/shop/03.jpg" alt="shop">
+                                        <img src="~/assets/images/shop/03.jpg" alt="shop">
                                     </div>
                                     <div class="product-content">
                                         <h6><a href="#">Product Title Here</a></h6>
@@ -154,7 +154,7 @@
                                 </li>
                                 <li>
                                     <div class="product-thumb">
-                                        <img src="assets/images/product/kit1.png" alt="shop">
+                                        <img src="~/assets/images/product/kit1.png" alt="shop">
                                     </div>
                                     <div class="product-content">
                                         <h6><a href="#">Product Title Here</a></h6>
@@ -179,7 +179,7 @@
                                 <div class="col-lg-5 col-12">
                                     <div class="thumb text-center">
                                         <div class="pro-thumb">
-                                            <img src="assets/images/shop/09.jpg" alt="shop">
+                                            <img src="~/assets/images/shop/09.jpg" alt="shop">
                                         </div>
                                     </div>
                                 </div>

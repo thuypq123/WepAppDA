@@ -5,51 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Sanpham</h4>
+<div class="container">
+    <h1>Chi tiết sản phẩm</h1>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl class="row card">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Tensp)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Tensp)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Soluong)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Soluong)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Dongia)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Dongia)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Img)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Img)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Thongtin)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Thongtin)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MadmNavigation)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MadmNavigation.Madm)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MadmNavigation.Tendm)
         </dd>
     </dl>
+    <div>
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Masp">Edit</a> |
+        <a asp-action="Index" class="btn btn-warning">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Masp">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

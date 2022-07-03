@@ -63,7 +63,13 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+
             }
             ViewData["Tk"] = new SelectList(_context.Tkadmins, "Tk", "Tk", blog.Tk);
             return View(blog);
@@ -103,6 +109,7 @@ namespace webapp.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(blog);
+                    TempData["success"] = "Đã sửa thành công";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -149,6 +156,7 @@ namespace webapp.Areas.Admin.Controllers
             var blog = await _context.Blogs.FindAsync(id);
             _context.Blogs.Remove(blog);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

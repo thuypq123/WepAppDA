@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace webapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
+
             services.AddControllersWithViews();
             services.AddMvc();
            
@@ -33,6 +37,11 @@ namespace webapp
                     options.UseSqlServer(Configuration.GetConnectionString("dbcovid19")));
             //services.AddPaging();
             services.AddCoreAdmin();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,8 +62,9 @@ namespace webapp
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseSession();
 
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

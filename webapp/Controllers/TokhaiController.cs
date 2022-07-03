@@ -23,8 +23,7 @@ namespace webapp.Controllers
         // GET: TokhaiController/Details/5
         public ActionResult Details(int id)
         {
-            var tokhai = _context.Tokhais.Find(id);
-            return View(tokhai);
+            return View();
         }
 
         // GET: TokhaiController/Create
@@ -43,39 +42,13 @@ namespace webapp.Controllers
             {
                 var tokhai = new Tokhai();
                 tokhai.Makh = 1;
-                tokhai.Dinhungdau = collection["dinhungdau"];
-                tokhai.Trieuchung = collection["trieuchung"];
-                if (collection["txnguoibenh"].ToList().Count()==1)
-                {
-                    tokhai.Txnguoibenh = true;
-                }
-                else
-                {
-                    tokhai.Txnguoibenh = false;
-                }
-                if (collection["txnuocbenh"].ToList().Count() == 1)
-                {
-                    tokhai.Txnguoinuocbenh = true;
-                }
-                else
-                {
-                    tokhai.Txnguoinuocbenh = false;
-                }
-                if (collection["nguoicobieuhien"].ToList().Count()==1)
-                {
-                    tokhai.Nguoicobieuhien = true;
-                }
-                else
-                {
-                    tokhai.Nguoicobieuhien = false;
-                }
                 _context.Tokhais.Add(tokhai);
                 _context.SaveChanges();
-                return RedirectToAction("index");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View("index");
+                return View();
             }
         }
 

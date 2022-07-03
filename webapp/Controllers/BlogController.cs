@@ -23,7 +23,7 @@ namespace webapp.Controllers
         public IActionResult Details(int id)
         {
             var Blog = _context.Blogs.First(x => x.Mablog == id);
-           
+
             return View(Blog);
         }
     }

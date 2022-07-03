@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Newtonsoft.Json
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var cart = SessionHelpers.GetObjFromJson<List<GioHang>>(HttpContextAccessor.HttpContext.Session, "GioHang");
+    if (cart != null)
+    {
+        <span style="vertical-align:sub">@cart.Count</span>
+    }
+
+}

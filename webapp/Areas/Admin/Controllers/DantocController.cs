@@ -62,7 +62,13 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(dantoc);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+             
             }
             return View(dantoc);
         }
@@ -101,6 +107,7 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(dantoc);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -144,6 +151,7 @@ namespace webapp.Areas.Admin.Controllers
             var dantoc = await _context.Dantocs.FindAsync(id);
             _context.Dantocs.Remove(dantoc);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

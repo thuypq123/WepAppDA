@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using webapp.Models;
+@{
+    ViewData["Title"] = "Giỏ Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Header Section Start Here -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Giỏ Hàng</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li>Giỏ Hàng</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page Header Section Ending Here -->
+<!-- Shop Cart Page Section start here -->
+<div class="shop-cart padding-tb">
+    <div class="container">
+        <div class="section-wrapper">
+            <div class="cart-top">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="cat-product">Sản phẩm</th>
+                            <th class="cat-price">Giá bán</th>
+                            <th class="cat-quantity">Số lượng</th>
+                            <th class="cat-toprice">Tổng cộng</th>
+                            <th class="cat-edit">Chỉnh sửa</th>
+                        </tr>
+                    </thead>
+                    @{
+                        List<GioHang> lstgiohang = SessionHelpers.GetObjFromJson<List<GioHang>>(Context.Session, "GioHang");
+                    }
+                    <tbody>
+                        @foreach (var item in lstgiohang)
+                        {
+                            <tr>
+                                <td class="product-item cat-product">
+                                    <div class="p-thumb">
+                                        <a href="@Url.Action("Details", "Product", new { id = item.MaSP })"><img src="~/@item.IMG" alt="product"></a>
+                                    </div>
+                                    <div class="p-content">
+                                        <a href="@Url.Action("Details", "Product", new { id = item.MaSP })">@item.TenSP</a>
+                                    </div>
+                                </td>
+                                <td class="cat-price">@item.DonGia VNĐ</td>
+                                @using (Html.BeginForm("CapNhat", "GioHang", new { @masp = item.MaSP }))
+                                {
+                                    <td class="cat-quantity">
+                                        <div class="cart-plus-minus">
+                                            <div class="dec qtybutton">-</div>
+                                            <input class="cart-plus-minus-box" type="text" name="soluong" value="@item.SoLuong">
+                                            <div class="inc qtybutton">+</div>
+                                        </div>
+                                    </td>
+                                    <td class="cat-toprice">@item.ThanhTien VNĐ</td>
+                                    <td class="cat-edit">
+                                        <a href="@Url.Action("XoaGioHang", new { masp=item.MaSP})"><img src="~/assets/images/shop/del.png" alt="delete"></a>
+                                        <button type="submit" class="btn">Cập nhật</button>
+                                    </td>
+                                }
+
+                            </tr>
+                        }
+
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+            <div class="cart-bottom">
+                <div class="cart-checkout-box">
+                    <a href="/GioHang/XoaTatCa">Xóa Tất cả</a>
+                    <a href="#">Cập nhật đơn hàng</a>
+                </div>
+                <div class="shiping-box">
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="calculate-shiping">
+                                
+                                <a href="/GioHang/DatHang">Thanh Toán</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="cart-overview">
+                                <h3>Tổng giỏ hàng</h3>
+                                <ul class="codex">
+                                    <li>
+                                        <span class="pull-left">Số lượng sản phẩm:</span>
+                                        <p class="pull-right">@ViewBag.TongSoLuong</p>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Vận chuyển và xử lý</span>
+                                        <p class="pull-right">Free Shipping</p>
+                                    </li>
+                                    <li>
+                                        <span class="pull-left">Tổng đơn hàng đặt</span>
+                                        <p class="pull-right">@ViewBag.TongTien VNĐ</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Cart Page Section ending here -->

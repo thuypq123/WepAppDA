@@ -60,7 +60,13 @@ namespace webapp.Areas.Admin.Controllers
             {
                 _context.Add(tkadmin);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Đã thêm thành công";
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                TempData["error"] = "Đã thêm thất bại";
+
             }
             return View(tkadmin);
         }
@@ -99,6 +105,7 @@ namespace webapp.Areas.Admin.Controllers
                 {
                     _context.Update(tkadmin);
                     await _context.SaveChangesAsync();
+                    TempData["success"] = "Đã sửa thành công";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -142,6 +149,7 @@ namespace webapp.Areas.Admin.Controllers
             var tkadmin = await _context.Tkadmins.FindAsync(id);
             _context.Tkadmins.Remove(tkadmin);
             await _context.SaveChangesAsync();
+            TempData["success"] = "Đã xóa thành công";
             return RedirectToAction(nameof(Index));
         }
 

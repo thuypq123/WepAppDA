@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Đăng nhập</title>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/assets/css/fontawesome.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="overlay">
+        <form action="/NguoiDung/DangKy" method="post">
+            <div class="con">
+                <!--     Start  header Content  -->
+                <header class="head-form">
+                    <h2>Đăng ký</h2>
+                </header>
+                <!--     End  header Content  -->
+                <br>
+                <div class="field-set">
+
+                    <!--   name -->
+                    <input class="form-input" name="hoten" id="txt-input" type="text" placeholder="Họ tên" required>
+                    <br>
+                    <!--   username -->
+                    <input class="form-input" name="username" id="txt-input" type="text" placeholder="Tài khoản" required>
+                    <br>
+                    <!--   Password -->
+                    <!--   Password Input-->
+                    <input class="form-input" name="pass" type="password" placeholder="Mật khẩu" id="pwd" required>
+                   
+                    <!--   repeatpass -->
+                    <input class="form-input" name="repeatpass" id="pwr" type="password" placeholder="Nhập lại mật khẩu" required>
+                  
+                    <!--   dia chi -->
+                    <input class="form-input" name="diachi" id="txt-input" type="text" placeholder="Địa chỉ" required>
+                    <br>
+                    <!--  email -->
+                    <input class="form-input" name="email" id="txt-input" type="email" placeholder="Email" required>
+                    <br>
+                    <!--  sdt -->
+                    <input class="form-input" name="sdt" id="txt-input" type="text" placeholder="Số điện thoại" required>
+                    <br>
+                    <!--  ngaysinh -->
+                    <input class="form-input" name="ngaysinh" id="datetime" type="datetime-local" placeholder="Ngày sinh" required>
+                    <br>
+                    <!--        buttons -->
+                    <!--      button LogIn -->
+                    <button type="submit" class="log-in"> Đăng ký </button>
+                </div>
+
+                <!--   End Conrainer  -->
+            </div>
+
+            <!-- End Form -->
+        </form>
+    </div>
+
+</body>
+</html>
+<script src="~/js/site.js"></script>
