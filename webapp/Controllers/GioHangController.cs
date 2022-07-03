@@ -107,9 +107,9 @@ namespace webapp.Controllers
             hd.Makh = kh.Makh;
             hd.Ngaylap = DateTime.Now;
             hd.Tongtien = TongTien();
-            hd.Nguoinhan = collection["tenkh"];
-            hd.Diachinhan = collection["diachi"];
-            hd.Sdtnhan = collection["sdt"];
+            hd.Nguoinhan = kh.Tenkh;
+            hd.Nguoinhan = kh.Diachi;
+            hd.Sdtnhan = kh.Sdt;
             hd.Tinhtranggiaohang = false;
             hd.Tinhtrangthanhtoan = false;
             context.Hoadons.Add(hd);
@@ -138,7 +138,8 @@ namespace webapp.Controllers
 
         public IActionResult XacNhanDonHang()
         {
-            return View();
+            TempData["success"] = "Đã thanh toán đơn hàng thành công";
+            return RedirectToAction("Index", "Product");
         }
 
         private int TongSoLuong()
