@@ -10,6 +10,7 @@ namespace webapp.Models
     {
         public covid19Context()
         {
+            
         }
 
         public covid19Context(DbContextOptions<covid19Context> options)
