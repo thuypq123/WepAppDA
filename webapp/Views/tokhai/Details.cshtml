@@ -1,0 +1,52 @@
+﻿@model webapp.Models.Tokhai
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section class="page-header">
+    <div class="container">
+        <div class="page-title">
+            <h2>Thông tin tờ khai</h2>
+            <ul class="breadcrumb lab-ul">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 20rem; margin:auto">
+            <img class="card-img-top" src="https://play-lh.googleusercontent.com/ufwUy4SGVTqCs8fcp6Ajxfpae0bNImN1Rq2cXUjWI7jlmNMCsXgQE5C3yUEzBu5Gadkz" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@ViewBag.Tenkh</h5>
+                <span style="color:red;">Nơi Đi:</span><p class="card-text">@Model.Dinhungdau</p>
+                <div class="canle" style="margin:0 0 10px 0px">
+                    <span style="color:red;">Tếp xúc người bệnh:</span>
+                    @if(@Model.Txnguoibenh==true){
+                        <span style=" width: 80px" class="btn btn-danger">CÓ</span> <br>
+                    }
+                    else
+                    {
+                        <span style=" width: 80px" class="btn btn-success">không</span><br>
+                    }
+                </div>
+                <div class="canle" style="margin:0 0 10px 0px">
+                    <span style="color:red;">Tếp xúc nước bệnh:</span>
+                    @if(@Model.Txnguoinuocbenh==true){
+                        <span style=" width: 80px" class="btn btn-danger">CÓ</span> <br>
+                    }
+                    else
+                    {
+                        <span style=" width: 80px" class="btn btn-success">không</span><br>
+                    }
+                </div>
+                <span style="color:red;">Triệu Chứng:</span><p class="card-text">@Model.Trieuchung</p>
+                @*<a href="index" class="btn btn-primary">Xem Danh Sách</a>*@
+                @Html.ActionLink("Xem Danh Sách", "Index", "Tokhai", new {}, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

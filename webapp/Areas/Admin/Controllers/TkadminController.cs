@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -166,5 +167,31 @@ namespace webapp.Areas.Admin.Controllers
             }    
             return RedirectToAction("Index", await _context.Tkadmins.ToListAsync());
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(IFormCollection collection)
+        {
+            string tk = collection["username"];
+            string mk = collection["pass"];
+            Tkadmin tkadmin = _context.Tkadmins.SingleOrDefault(t => t.Tk == tk && t.Mk == mk);
+            if (tkadmin != null)
+            {
+                SessionHelpers.SetObjAsJson(HttpContext.Session, "Tkadmin", tkadmin);
+                TempData["success"] = "Đăng nhập thành công";  
+            }
+            else
+            {
+                TempData["error"] = "Đăng nhập thất bại";
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+     
+
     }
 }

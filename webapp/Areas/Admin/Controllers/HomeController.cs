@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webapp.Models;
 
 namespace webapp.Areas.Admin.Controllers
 {
@@ -11,7 +12,16 @@ namespace webapp.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            if (SessionHelpers.GetObjFromJson<Tkadmin>(HttpContext.Session, "Tkadmin") == null)
+            {
+                return RedirectToAction("Login", "Tkadmin");
+            }
+            else
+            {
+                return View();
+            }
         }
+
+            
     }
 }

@@ -23,7 +23,9 @@ namespace webapp.Controllers
         // GET: TokhaiController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var tokhai = _context.Tokhais.Find(id);
+            //ViewBag.Khach = _context.Khachhangs.Find(tokhai.Makh);
+            return View(tokhai);
         }
 
         // GET: TokhaiController/Create
